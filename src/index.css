@@ -3,11 +3,7 @@
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-image: url('/WhatsApp%20Image%202026-09-25%20at%2010.20.39%20PM.jpeg');
-    background-repeat: repeat;
-    background-position: center top;
-    background-size: 366px 178px;
-    background-attachment: fixed;
+    background-color: #FAF9F5;
   }
   .font-serif {
     font-family: 'Cinzel', Georgia, serif;
@@ -38,5 +34,18 @@
   background-repeat: repeat;
   background-position: center center;
   background-size: 366px 178px;
+}
+
+@keyframes panPatternHorizontal {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 366px 0px;
+  }
+}
+
+.animate-pattern-pan {
+  animation: panPatternHorizontal 28s linear infinite;
 }
 

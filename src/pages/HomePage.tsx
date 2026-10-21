@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import {
   Sparkles,
   ArrowRight,
-  ShieldCheck,
-  Users,
   Award,
-  BookOpen,
   CheckCircle,
   Star,
   Quote,
-  ChevronLeft,
-  ChevronRight,
-  Phone,
 } from 'lucide-react';
 import { IslamicPattern } from '../components/IslamicPattern';
+import { IslamicLogo } from '../components/IslamicLogo';
 import { PageRoute } from '../types';
 import {
   courses,
@@ -28,75 +24,8 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) => {
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
-  // 3-slide image slider with TWO images per slide
-  const slides = [
-    {
-      id: 1,
-      title: 'Sacred Recitation & Tajweed',
-      subtitle: 'Master authentic pronunciation with qualified Huffaz',
-      image1: {
-        src: '/assets/images/hero_quran_rehal_1790269853962.jpg',
-        alt: 'Holy Quran on carved wooden Rehal',
-        caption: 'Holy Quran Recitation',
-      },
-      image2: {
-        src: '/assets/images/quran_tajweed_reading_1790269867429.jpg',
-        alt: 'Tajweed Quran reading with wooden pointer',
-        caption: 'Makharij & Tajweed Practice',
-      },
-    },
-    {
-      id: 2,
-      title: 'Qualified Scholars & Academy Pedagogy',
-      subtitle: 'Guidance from Al-Azhar and Madinah University alumni',
-      image1: {
-        src: '/assets/images/islamic_academy_learning_1790269898921.jpg',
-        alt: 'Student in Islamic academy Quran lesson',
-        caption: 'Personalized 1-on-1 Lessons',
-      },
-      image2: {
-        src: '/assets/images/teacher_scholar_male_1790269882669.jpg',
-        alt: 'Certified Scholar and Quran Mentor',
-        caption: 'Certified & Ijazah Scholars',
-      },
-    },
-    {
-      id: 3,
-      title: 'Global Online Classes from Home',
-      subtitle: 'Engaging interactive learning for children and adults',
-      image1: {
-        src: '/assets/images/student_quran_online.jpg',
-        alt: 'Young student with headphones learning Quran online',
-        caption: 'Online Digital Classroom',
-      },
-      image2: {
-        src: '/assets/images/quran_hifz_study.jpg',
-        alt: 'Illuminated Holy Quran in peaceful study room',
-        caption: 'Lasting Quran Memorization',
-      },
-    },
-  ];
-
-  // Auto-slide every 5 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  // User-specified statistics:
-  // Students: 1000+, Teachers: 150+, Courses: 10+, Countries: 24+
+  // Statistics
   const stats = [
     { label: 'Students', value: '1000+' },
     { label: 'Teachers', value: '150+' },
@@ -137,46 +66,141 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
     },
   ];
 
-
   return (
     <div className="w-full relative overflow-hidden text-slate-800">
-      {/* Home Page – Main Section */}
-      <section className="relative pt-10 pb-16 md:pt-14 md:pb-24 bg-gradient-to-b from-[#FAF8F5]/60 via-white/50 to-[#FAF8F5]/60 border-b border-slate-200/60">
-        <IslamicPattern variant="light" opacity={0.6} patternType="star8" />
+      {/* Home Page – Hero Section */}
+      <section className="relative w-full bg-white border-b border-slate-200/80 overflow-hidden">
+        
+        {/* Desktop Golden Curved Background on Left with Smooth Horizontal Gradient to White */}
+        <div className="absolute top-0 left-0 bottom-0 w-full lg:w-[50%] xl:w-[48%] pointer-events-none hidden lg:block overflow-hidden z-0">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 500 680"
+            preserveAspectRatio="none"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              {/* Smooth horizontal gradient transition from gold to white */}
+              <linearGradient id="heroGoldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#D9A328" />
+                <stop offset="40%" stopColor="#E5B21D" />
+                <stop offset="75%" stopColor="#F5D061" />
+                <stop offset="98%" stopColor="#FDFCF8" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+              </linearGradient>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
-          {/* BISMILLAH IN THE CENTER (No line in front of it) */}
-          <div className="text-center w-full select-none">
-            <div className="font-arabic text-2xl sm:text-3xl md:text-4xl text-[#0A3826] font-bold tracking-wider inline-block">
-              بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-            </div>
-          </div>
+              {/* Exact Organic Curve boundary */}
+              <clipPath id="yellowCurveSilhouette">
+                <path d="M 0,0 L 420,0 C 455,90 495,220 495,340 C 495,470 435,560 335,680 L 0,680 Z" />
+              </clipPath>
+            </defs>
 
-          {/* Heading Content & Slider */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-6 text-center lg:text-left space-y-5">
-              {/* Main Heading: Premier International Islamic Online Academy */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-extrabold text-black leading-[1.18] tracking-tight">
-                Premier International Islamic Online Academy
-              </h1>
+            {/* Secondary Soft Translucent Rim behind curve for smooth transition */}
+            <path
+              d="M 0,0 L 440,0 C 475,90 515,220 515,340 C 515,470 455,560 355,680 L 0,680 Z"
+              fill="#F4EFE6"
+              opacity="0.6"
+            />
 
-              {/* Immediately below Bismillah/Heading: 3-Day Free Trial Classes */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0A3826] text-[#D4AF37] text-xs sm:text-sm font-bold shadow-md">
-                <Sparkles className="w-4 h-4 text-[#D4AF37]" />
-                <span>3-Day Free Trial Classes</span>
+            {/* Main Vibrant Gold Shape with clean smooth horizontal gradient and no repeating patterns */}
+            <g clipPath="url(#yellowCurveSilhouette)">
+              <path
+                d="M 0,0 L 420,0 C 455,90 495,220 495,340 C 495,470 435,560 335,680 L 0,680 Z"
+                fill="url(#heroGoldGradient)"
+              />
+            </g>
+          </svg>
+        </div>
+
+        {/* Hero Content Container */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Side: Golden Panel with Logo & Overlapping Quran Reading Images */}
+            <motion.div
+              initial={{ x: -40, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5 relative"
+            >
+              {/* Mobile/Tablet Golden Card Wrapper */}
+              <div className="lg:contents">
+                <div className="rounded-3xl lg:rounded-none bg-gradient-to-r from-[#D9A328] via-[#E2B338] to-[#F1C84D] lg:bg-none p-6 sm:p-8 lg:p-0 text-white relative overflow-hidden shadow-lg lg:shadow-none">
+                  
+                  {/* Brand Header inside Golden Segment: Logo + Quran Education + Online Quran Academy */}
+                  <div className="relative z-20 flex items-center gap-3.5 mb-8 lg:mb-12">
+                    <div className="w-12 h-14 sm:w-14 sm:h-16 shrink-0 drop-shadow-md">
+                      <IslamicLogo className="w-full h-full" color="#FFFFFF" />
+                    </div>
+                    <div className="flex flex-col text-left">
+                      <span className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-wide leading-tight drop-shadow-xs">
+                        Quran Education
+                      </span>
+                      <span className="text-xs sm:text-sm text-amber-100 font-semibold tracking-wider uppercase mt-0.5">
+                        Online Quran Academy
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Overlapping Rounded Student Quran Reading Cards */}
+                  <div className="relative z-20 flex items-end justify-center lg:justify-start pt-2 pb-4 sm:pb-6">
+                    {/* Background Boy Student Card (Left) */}
+                    <div className="relative rounded-[2rem] overflow-hidden border-4 border-white/95 shadow-2xl w-36 sm:w-44 md:w-48 aspect-[3/4] bg-slate-800 shrink-0 -mr-8 sm:-mr-10 mb-2 z-10 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                      <img
+                        src="/assets/images/boy_quran_student_1792430316665.jpg"
+                        alt="Young student reciting Holy Quran on rehal"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    </div>
+
+                    {/* Foreground Girl Student in Black Hijab Card (Right) */}
+                    <div className="relative rounded-[2.3rem] overflow-hidden border-4 border-white shadow-2xl w-48 sm:w-56 md:w-64 aspect-[3/4] bg-slate-900 shrink-0 z-20 transform hover:scale-[1.02] transition-transform duration-300">
+                      <img
+                        src="/assets/images/girl_black_hijab_quran_1792432274793.jpg"
+                        alt="Young girl in black hijab studying Holy Quran on wooden rehal stand"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Side: Clean White Background with Bismillah, Title & CTA */}
+            <div className="lg:col-span-7 text-center lg:text-left space-y-6 lg:pl-6 bg-white">
+              
+              {/* Bismillah in Arabic Calligraphy */}
+              <div className="w-full select-none">
+                <div className="font-arabic text-2xl sm:text-3xl md:text-4xl text-[#0A3826] font-bold tracking-wider inline-block">
+                  بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                </div>
               </div>
 
-              {/* Description */}
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              {/* Main Heading in elegant dark green and gold typography */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-serif font-extrabold leading-[1.15] tracking-tight">
+                <span className="text-[#072C1E]">Online </span>
+                <span className="text-[#D4AF37]">Quran Academy</span>
+              </h1>
+
+              {/* Premier International Islamic Online Academy Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0A3826] text-[#D4AF37] text-xs sm:text-sm font-bold shadow-md">
+                <Sparkles className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                <span>Premier International Islamic Online Academy · 3-Day Free Trial Available</span>
+              </div>
+
+              {/* Existing website description preserved with readable font size (16–18px) */}
+              <p className="text-base sm:text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 Learn Quran reading, Tajweed, Memorization, Translation, and Arabic from certified male and female scholars from Al-Azhar and Islamic University of Madinah. Flexible timing across all time zones.
               </p>
 
               {/* Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <button
                   onClick={() => onOpenEnroll()}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-[#0A3826] to-[#072C1E] hover:from-[#0E4B33] hover:to-[#0A3826] text-white rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 shadow-md shadow-emerald-950/20 hover:shadow-xl active:scale-95 cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#0A3826] to-[#072C1E] hover:from-[#0E4B33] hover:to-[#0A3826] text-white rounded-xl text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-200 shadow-md shadow-emerald-950/20 hover:shadow-xl active:scale-95 cursor-pointer whitespace-nowrap"
                 >
                   <span>Book 3-Day Free Trial</span>
                   <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
@@ -188,7 +212,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-md active:scale-95 whitespace-nowrap"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-sm sm:text-base font-bold transition-all shadow-md active:scale-95 whitespace-nowrap"
                 >
                   <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                     <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
@@ -196,104 +220,36 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                   <span>WhatsApp: {ACADEMY_CONFIG.whatsapp}</span>
                 </a>
               </div>
-            </div>
 
-            {/* Right: Three-Slide Image Slider (Each Slide Contains TWO Images) */}
-            <div className="lg:col-span-6 relative">
-              <div className="relative rounded-3xl overflow-hidden bg-white border-2 border-emerald-900/15 shadow-2xl p-3 sm:p-4">
-                {/* 2-Image pairing per slide */}
-                <div className="relative overflow-hidden rounded-2xl">
-                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
-                    {/* Image 1 of current slide */}
-                    <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-100 group">
-                      <img
-                        src={slides[currentSlide].image1.src}
-                        alt={slides[currentSlide].image1.alt}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                      <span className="absolute bottom-2 left-2 right-2 text-[10px] sm:text-xs font-bold text-white leading-tight drop-shadow-sm text-left">
-                        {slides[currentSlide].image1.caption}
-                      </span>
-                    </div>
-
-                    {/* Image 2 of current slide */}
-                    <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-100 group">
-                      <img
-                        src={slides[currentSlide].image2.src}
-                        alt={slides[currentSlide].image2.alt}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                      <span className="absolute bottom-2 left-2 right-2 text-[10px] sm:text-xs font-bold text-white leading-tight drop-shadow-sm text-left">
-                        {slides[currentSlide].image2.caption}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Caption banner below images */}
-                  <div className="mt-3 p-3 rounded-xl bg-[#072C1E] text-white flex items-center justify-between gap-2 text-left">
-                    <div>
-                      <p className="text-xs font-bold text-[#D4AF37]">
-                        {slides[currentSlide].title}
-                      </p>
-                      <p className="text-[11px] text-emerald-100/80 line-clamp-1">
-                        {slides[currentSlide].subtitle}
-                      </p>
-                    </div>
-
-                    {/* Slide Navigation Buttons */}
-                    <div className="flex items-center gap-1 shrink-0">
-                      <button
-                        onClick={prevSlide}
-                        className="w-7 h-7 rounded-lg bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-colors cursor-pointer"
-                        aria-label="Previous slide"
-                      >
-                        <ChevronLeft className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={nextSlide}
-                        className="w-7 h-7 rounded-lg bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-colors cursor-pointer"
-                        aria-label="Next slide"
-                      >
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Dot Indicators */}
-                <div className="flex items-center justify-center gap-2 mt-3">
-                  {slides.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentSlide(i)}
-                      className={`h-2 rounded-full transition-all cursor-pointer ${
-                        currentSlide === i ? 'w-6 bg-[#0A3826]' : 'w-2 bg-slate-300 hover:bg-slate-400'
-                      }`}
-                      aria-label={`Slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
+              {/* Key Trust Badges */}
+              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-sm font-medium text-slate-600">
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  1-on-1 Personalized Classes
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  Male & Female Certified Scholars
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  Flexible 24/7 Global Timing
+                </span>
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Academy Statistics:
-          Students: 1000+
-          Teachers: 150+
-          Courses: 10+
-          Countries: 24+
-      */}
-      <section className="relative py-10 bg-white/60 border-b border-slate-200/60">
+      {/* Academy Statistics */}
+      <section className="relative py-12 bg-white/60 border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="text-center p-4 rounded-2xl bg-white/80 border border-slate-200/70 shadow-xs hover:bg-white transition-colors"
+                className="text-center p-5 rounded-2xl bg-white/80 border border-slate-200/70 shadow-xs hover:bg-white transition-colors"
               >
                 <div className="text-3xl sm:text-4xl md:text-5xl font-serif font-extrabold text-[#0A3826] tracking-tight">
                   {stat.value}
@@ -307,18 +263,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
         </div>
       </section>
 
-      {/* 3. Why Families Choose Us
-          - Heading: Why Families Choose Us
-          - Sub-heading: Qualified & Experienced Teachers
-          - Text: Our teachers have qualifications and Islamic studies backgrounds from recognized institutions, including Al-Azhar and the Islamic University of Madinah.
-          - Buttons below: Enroll Now + WhatsApp
-      */}
+      {/* 3. Why Families Choose Us */}
       <section className="relative py-20 bg-[#FAF8F5]/60">
         <IslamicPattern variant="light" opacity={0.6} patternType="star8" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs font-bold">
-            <Award className="w-3.5 h-3.5 text-[#C5A059]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs sm:text-sm font-bold">
+            <Award className="w-4 h-4 text-[#C5A059]" />
             <span>Islamic Academic Excellence</span>
           </div>
 
@@ -326,35 +277,35 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
             Why Families Choose Us
           </h2>
 
-          <div className="p-8 sm:p-10 rounded-3xl bg-white/92 backdrop-blur-sm border border-slate-200/90 shadow-md text-center space-y-4">
+          <div className="p-8 sm:p-10 rounded-3xl bg-white/92 backdrop-blur-sm border border-slate-200/90 shadow-md text-center space-y-5">
             <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0A3826]">
               Qualified & Experienced Teachers
             </h3>
 
-            <p className="text-sm sm:text-base text-slate-700 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto">
               Our teachers have qualifications and Islamic studies backgrounds from recognized institutions, including Al-Azhar and the Islamic University of Madinah.
             </p>
 
-            <div className="pt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-slate-600">
-              <span className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-50 text-[#0A3826] font-semibold rounded-lg">
-                <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+            <div className="pt-3 flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-slate-600">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-50 text-[#0A3826] font-semibold rounded-lg">
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
                 Ijazah Certified Scholars
               </span>
-              <span className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-50 text-[#0A3826] font-semibold rounded-lg">
-                <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-50 text-[#0A3826] font-semibold rounded-lg">
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
                 Male & Female Tutors
               </span>
-              <span className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-50 text-[#0A3826] font-semibold rounded-lg">
-                <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-50 text-[#0A3826] font-semibold rounded-lg">
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
                 1-on-1 Dedicated Lessons
               </span>
             </div>
 
-            {/* Two Buttons below this section: Enroll Now & WhatsApp */}
+            {/* Two Buttons: Enroll Now & WhatsApp */}
             <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => onOpenEnroll()}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-sm font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer"
               >
                 <span>Enroll Now</span>
                 <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
@@ -366,7 +317,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-md"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-sm font-bold transition-all shadow-md"
               >
                 <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                   <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
@@ -378,27 +329,27 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
         </div>
       </section>
 
-      {/* 4. Courses Section (Tafseer removed, Translation kept, Basic Arabic & Quranic Arabic retained) */}
+      {/* 4. Courses Section */}
       <section className="relative py-20 bg-white/60">
         <IslamicPattern variant="subtle" opacity={0.65} patternType="girih" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 text-left">
             <div>
-              <span className="text-xs font-bold text-[#C5A059] uppercase tracking-widest font-serif">
+              <span className="text-xs sm:text-sm font-bold text-[#C5A059] uppercase tracking-widest font-serif">
                 Comprehensive Curriculum
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#072C1E] mt-1">
                 Our Quran & Arabic Courses
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2 max-w-xl">
+              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-xl">
                 Structured programs including Basic Arabic, Quranic Arabic, and Translation taught 1-on-1 by certified scholars.
               </p>
             </div>
 
             <button
               onClick={() => onNavigate('courses')}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A3826] hover:text-[#072C1E] group cursor-pointer"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0A3826] hover:text-[#072C1E] group cursor-pointer"
             >
               <span>View All Courses</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -413,7 +364,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
               >
                 <div className="p-6 sm:p-7">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-100 text-[#0A3826]">
+                    <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-100 text-[#0A3826]">
                       {course.category}
                     </span>
                     <span className="text-xs font-semibold text-slate-500">
@@ -421,31 +372,29 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                     </span>
                   </div>
 
-                  <div className="font-arabic text-lg text-[#0A3826] mb-1 font-semibold">
+                  <div className="font-arabic text-xl text-[#0A3826] mb-1 font-semibold">
                     {course.arabicTitle}
                   </div>
 
-                  <h3 className="text-lg font-serif font-bold text-[#072C1E] mb-2">
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-[#072C1E] mb-2">
                     {course.title}
                   </h3>
 
-                  <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
                     {course.shortDesc}
                   </p>
-
-
                 </div>
 
                 <div className="px-6 pb-6 pt-2 flex items-center gap-2">
                   <button
                     onClick={() => onNavigate('course-detail', course.slug || course.id)}
-                    className="flex-1 py-2.5 px-3 bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-xl border border-slate-300 transition-colors text-center cursor-pointer"
+                    className="flex-1 py-2.5 px-3 bg-white hover:bg-slate-100 text-slate-700 text-xs sm:text-sm font-semibold rounded-xl border border-slate-300 transition-colors text-center cursor-pointer"
                   >
                     View Details
                   </button>
                   <button
                     onClick={() => onOpenEnroll(course.id)}
-                    className="flex-1 py-2.5 px-3 bg-[#0A3826] hover:bg-[#072C1E] text-white text-xs font-bold rounded-xl transition-colors text-center cursor-pointer"
+                    className="flex-1 py-2.5 px-3 bg-[#0A3826] hover:bg-[#072C1E] text-white text-xs sm:text-sm font-bold rounded-xl transition-colors text-center cursor-pointer"
                   >
                     Enroll Now
                   </button>
@@ -456,14 +405,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
         </div>
       </section>
 
-      {/* 5. How Your Journey Begins in 6 Simple Steps - Desktop / Laptop View (hidden md:block) */}
+      {/* 5. How Your Journey Begins in 6 Simple Steps - Desktop */}
       <section className="hidden md:block relative py-20 bg-[#FAF8F5]/60">
         <IslamicPattern variant="light" opacity={0.6} patternType="star8" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs font-bold">
-              <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs sm:text-sm font-bold">
+              <Sparkles className="w-4 h-4 text-[#C5A059]" />
               <span>Simple & Transparent Admissions</span>
             </div>
 
@@ -471,7 +420,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
               How Your Journey Begins in 6 Simple Steps
             </h2>
 
-            <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
               Getting started takes less than 2 minutes. We match you with the ideal certified scholar and schedule your first trial class at your convenience.
             </p>
           </div>
@@ -497,7 +446,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                     {step.title}
                   </h3>
 
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-sm text-slate-600 leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
@@ -506,7 +455,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                   <div className="pt-4 mt-4 border-t border-slate-200/70 flex flex-col sm:flex-row gap-2">
                     <button
                       onClick={() => onNavigate('contact')}
-                      className="flex-1 py-2 px-3 bg-[#0A3826] hover:bg-[#072C1E] text-white text-[11px] font-bold rounded-lg text-center transition-colors shadow-2xs cursor-pointer"
+                      className="flex-1 py-2 px-3 bg-[#0A3826] hover:bg-[#072C1E] text-white text-xs font-bold rounded-lg text-center transition-colors shadow-2xs cursor-pointer"
                     >
                       Contact Academy
                     </button>
@@ -516,7 +465,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 py-2 px-3 bg-[#25D366] hover:bg-[#20BD5A] text-white text-[11px] font-bold rounded-lg text-center transition-colors shadow-2xs flex items-center justify-center gap-1"
+                      className="flex-1 py-2 px-3 bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold rounded-lg text-center transition-colors shadow-2xs flex items-center justify-center gap-1"
                     >
                       <svg className="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
                         <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
@@ -564,12 +513,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
         </div>
       </section>
 
-      {/* 5. Mobile View (block md:hidden): Button Order: How It Works, Contact Academy, Academy Contact Form, WhatsApp */}
+      {/* 5. Mobile View */}
       <section className="block md:hidden relative py-8 px-4 bg-[#FAF8F5]/60 border-b border-slate-200/50">
         <IslamicPattern variant="light" opacity={0.6} patternType="star8" />
 
         <div className="relative max-w-sm mx-auto flex flex-col gap-3">
-          {/* Button 1: How It Works */}
           <button
             onClick={() => onNavigate('how-it-works')}
             className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
@@ -578,7 +526,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
             <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
           </button>
 
-          {/* Button 2: Contact Academy */}
           <button
             onClick={() => onNavigate('contact')}
             className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
@@ -587,22 +534,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
             <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
           </button>
 
-          {/* Button 3: Under "Contact Academy" -> Added Button for Academy Contact Form */}
-          <a
-            href="#/contact"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate('contact');
-            }}
+          <button
+            onClick={() => onNavigate('contact')}
             className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] hover:from-[#E5BE48] hover:to-[#D4AF37] text-slate-950 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
           >
             <span>Academy Contact Form</span>
             <ArrowRight className="w-4 h-4 text-[#072C1E]" />
-          </a>
+          </button>
 
-          {/* Button 4: WhatsApp link to +92 318 7779954 */}
           <a
             href="https://wa.me/923187779954?text=As-salamu%20alaykum!%20I%20would%20like%20to%20begin%20my%20Quran%20learning%20journey%20and%20schedule%20my%203-Day%20Free%20Trial."
             target="_blank"
@@ -617,21 +556,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
         </div>
       </section>
 
-      {/* NOTE: Sections Removed from Home Page as explicitly requested:
-          - Distinguished Faculty section: REMOVED
-          - Begin Your Quran Learning Journey Today section: REMOVED
-      */}
-
-      {/* 7. Student Reviews / Testimonials Section
-          - Heading: What Our Students & Parents Say
-          - Text: Trusted by 200+ Muslim Families
-      */}
+      {/* 7. Student Reviews / Testimonials Section */}
       <section className="relative py-20 bg-white/60">
         <IslamicPattern variant="subtle" opacity={0.65} patternType="arabesque" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-8 text-center">
           <div className="space-y-3 mb-12">
-            <span className="text-xs font-bold text-[#C5A059] uppercase tracking-widest font-serif">
+            <span className="text-xs sm:text-sm font-bold text-[#C5A059] uppercase tracking-widest font-serif">
               Trusted by 200+ Muslim Families
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#072C1E]">
@@ -642,20 +573,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
           <div className="relative bg-white/92 backdrop-blur-sm p-8 sm:p-12 rounded-3xl border border-slate-200/90 shadow-sm max-w-3xl mx-auto">
             <Quote className="w-10 h-10 text-[#C5A059]/40 mx-auto mb-4" />
 
-            <p className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed font-serif italic mb-6">
+            <p className="text-base sm:text-lg md:text-xl text-slate-700 leading-relaxed font-serif italic mb-6">
               "{testimonials[activeTestimonialIdx]?.quote}"
             </p>
 
             <div className="flex items-center justify-center gap-1 text-[#D4AF37] mb-3">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-[#D4AF37]" />
+                <Star key={i} className="w-5 h-5 fill-[#D4AF37]" />
               ))}
             </div>
 
-            <h4 className="text-base font-bold text-[#072C1E]">
+            <h4 className="text-lg font-bold text-[#072C1E]">
               {testimonials[activeTestimonialIdx]?.name}
             </h4>
-            <p className="text-xs text-slate-500">
+            <p className="text-sm text-slate-500">
               {testimonials[activeTestimonialIdx]?.role} ·{' '}
               {testimonials[activeTestimonialIdx]?.location}
             </p>

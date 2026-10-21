@@ -189,12 +189,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenEnroll }
             >
               Experience 1-on-1 Class
             </button>
-            <button
-              onClick={() => onNavigate('teachers')}
-              className="w-full sm:w-auto px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors border border-white/20 cursor-pointer"
-            >
-              Meet Our Scholars
-            </button>
           </div>
         </div>
       </section>

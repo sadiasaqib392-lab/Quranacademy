@@ -47,6 +47,10 @@ export default function App() {
         return;
       }
 
+      if (hash === 'enroll') {
+        setCurrentPage('admissions');
+        return;
+      }
 
       const validPages: PageRoute[] = [
         'home',
@@ -76,9 +80,15 @@ export default function App() {
   }, []);
 
   const handleNavigate = (page: PageRoute, slug?: string) => {
-    const targetHash = page === 'course-detail' && slug ? `#/course/${slug}` : `#/${page}`;
-    const targetUrl = `${window.location.origin}${window.location.pathname}${targetHash}`;
-    window.open(targetUrl, '_blank', 'noopener,noreferrer');
+    if (page === 'course-detail' && slug) {
+      setCourseSlug(slug);
+      setCurrentPage('course-detail');
+      window.location.hash = `#/course/${slug}`;
+    } else {
+      setCurrentPage(page);
+      window.location.hash = `#/${page}`;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleOpenEnroll = (courseId?: string) => {
@@ -89,20 +99,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-transparent text-slate-800 font-sans selection:bg-[#0A3826] selection:text-white relative">
-      {/* Site-wide Islamic Geometric Background Pattern from user upload (/WhatsApp Image 2026-09-25 at 10.20.39 PM.jpeg) */}
-      <div
-        className="fixed inset-0 pointer-events-none select-none z-0 opacity-100"
-        style={{
-          backgroundImage: `url('/WhatsApp%20Image%202026-09-25%20at%2010.20.39%20PM.jpeg')`,
-          backgroundRepeat: 'repeat',
-          backgroundPosition: 'center top',
-          backgroundSize: '366px 178px',
-          backgroundAttachment: 'fixed',
-        }}
-        aria-hidden="true"
-      />
-
+    <div className="min-h-screen flex flex-col bg-[#FAF9F5] text-slate-800 font-sans selection:bg-[#0A3826] selection:text-white relative">
       {/* Sticky Navigation Bar */}
       <Navbar
         currentPage={currentPage}
