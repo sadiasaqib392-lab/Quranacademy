@@ -9,7 +9,6 @@ import {
   Quote,
 } from 'lucide-react';
 import { IslamicPattern } from '../components/IslamicPattern';
-import { IslamicLogo } from '../components/IslamicLogo';
 import { PageRoute } from '../types';
 import {
   courses,
@@ -69,82 +68,81 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
   return (
     <div className="w-full relative overflow-hidden text-slate-800">
       {/* Home Page – Hero Section */}
-      <section className="relative w-full bg-white border-b border-slate-200/80 overflow-hidden">
+      <section className="relative w-full bg-transparent overflow-hidden">
         
-        {/* Desktop Golden Curved Background on Left with Smooth Horizontal Gradient to White */}
-        <div className="absolute top-0 left-0 bottom-0 w-full lg:w-[50%] xl:w-[48%] pointer-events-none hidden lg:block overflow-hidden z-0">
+        {/* Desktop Golden Curved Background on Left with Smooth Horizontal Gradient and Horizontal Animation */}
+        <motion.div
+          initial={{ x: -120, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute top-0 left-0 bottom-0 w-full lg:w-[47%] xl:w-[45%] pointer-events-none hidden lg:block overflow-hidden z-0"
+        >
           <svg
             className="w-full h-full"
-            viewBox="0 0 500 680"
+            viewBox="0 0 540 680"
             preserveAspectRatio="none"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
-              {/* Smooth horizontal gradient transition from gold to white */}
+              {/* Smooth horizontal gradient transition from gold to white/pattern with animated shimmer */}
               <linearGradient id="heroGoldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#D9A328" />
-                <stop offset="40%" stopColor="#E5B21D" />
-                <stop offset="75%" stopColor="#F5D061" />
-                <stop offset="98%" stopColor="#FDFCF8" stopOpacity="0.95" />
-                <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                <stop offset="0%" stopColor="#D9A328">
+                  <animate attributeName="stopColor" values="#D9A328;#E5B21D;#D9A328" dur="7s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="50%" stopColor="#E5B21D">
+                  <animate attributeName="offset" values="0.50;0.62;0.50" dur="7s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="82%" stopColor="#F5D061" />
+                <stop offset="96%" stopColor="#F8F4EC" stopOpacity="0.85" />
+                <stop offset="100%" stopColor="#FAF9F5" stopOpacity="0" />
               </linearGradient>
 
-              {/* Exact Organic Curve boundary */}
+              {/* Generous Organic Curve boundary encompassing full cards */}
               <clipPath id="yellowCurveSilhouette">
-                <path d="M 0,0 L 420,0 C 455,90 495,220 495,340 C 495,470 435,560 335,680 L 0,680 Z" />
+                <path d="M 0,0 L 460,0 C 500,100 540,240 540,350 C 540,480 470,580 370,680 L 0,680 Z" />
               </clipPath>
             </defs>
 
             {/* Secondary Soft Translucent Rim behind curve for smooth transition */}
             <path
-              d="M 0,0 L 440,0 C 475,90 515,220 515,340 C 515,470 455,560 355,680 L 0,680 Z"
+              d="M 0,0 L 480,0 C 520,100 560,240 560,350 C 560,480 490,580 390,680 L 0,680 Z"
               fill="#F4EFE6"
               opacity="0.6"
             />
 
-            {/* Main Vibrant Gold Shape with clean smooth horizontal gradient and no repeating patterns */}
+            {/* Main Vibrant Gold Shape with horizontal gradient animation */}
             <g clipPath="url(#yellowCurveSilhouette)">
               <path
-                d="M 0,0 L 420,0 C 455,90 495,220 495,340 C 495,470 435,560 335,680 L 0,680 Z"
+                d="M 0,0 L 460,0 C 500,100 540,240 540,350 C 540,480 470,580 370,680 L 0,680 Z"
                 fill="url(#heroGoldGradient)"
               />
             </g>
           </svg>
-        </div>
+        </motion.div>
 
         {/* Hero Content Container */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Left Side: Golden Panel with Logo & Overlapping Quran Reading Images */}
+            {/* Left Side: Golden Panel with Horizontal Transition & Overlapping Quran Reading Images */}
             <motion.div
-              initial={{ x: -40, opacity: 0 }}
+              initial={{ x: -140, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5 relative"
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5 relative flex justify-start items-center"
             >
               {/* Mobile/Tablet Golden Card Wrapper */}
-              <div className="lg:contents">
-                <div className="rounded-3xl lg:rounded-none bg-gradient-to-r from-[#D9A328] via-[#E2B338] to-[#F1C84D] lg:bg-none p-6 sm:p-8 lg:p-0 text-white relative overflow-hidden shadow-lg lg:shadow-none">
+              <div className="w-full lg:contents">
+                <div className="rounded-3xl lg:rounded-none bg-gradient-to-r from-[#D9A328] via-[#E2B338] to-[#F1C84D] animate-horizontal-gradient lg:bg-none p-6 sm:p-8 lg:p-0 text-white relative overflow-hidden shadow-lg lg:shadow-none">
                   
-                  {/* Brand Header inside Golden Segment: Logo + Quran Education + Online Quran Academy */}
-                  <div className="relative z-20 flex items-center gap-3.5 mb-8 lg:mb-12">
-                    <div className="w-12 h-14 sm:w-14 sm:h-16 shrink-0 drop-shadow-md">
-                      <IslamicLogo className="w-full h-full" color="#FFFFFF" />
-                    </div>
-                    <div className="flex flex-col text-left">
-                      <span className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-wide leading-tight drop-shadow-xs">
-                        Quran Education
-                      </span>
-                      <span className="text-xs sm:text-sm text-amber-100 font-semibold tracking-wider uppercase mt-0.5">
-                        Online Quran Academy
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Overlapping Rounded Student Quran Reading Cards */}
-                  <div className="relative z-20 flex items-end justify-center lg:justify-start pt-2 pb-4 sm:pb-6">
+                  {/* Overlapping Rounded Student Quran Reading Cards with Horizontal Transition */}
+                  <motion.div
+                    initial={{ x: -80, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.15, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative z-20 flex items-end justify-center lg:justify-start py-4 sm:py-6 lg:py-8 pl-0 sm:pl-2"
+                  >
                     {/* Background Boy Student Card (Left) */}
                     <div className="relative rounded-[2rem] overflow-hidden border-4 border-white/95 shadow-2xl w-36 sm:w-44 md:w-48 aspect-[3/4] bg-slate-800 shrink-0 -mr-8 sm:-mr-10 mb-2 z-10 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
                       <img
@@ -164,13 +162,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Right Side: Clean White Background with Bismillah, Title & CTA */}
-            <div className="lg:col-span-7 text-center lg:text-left space-y-6 lg:pl-6 bg-white">
+            {/* Right Side: Clean Background with Bismillah, Title & CTA - No white overlay box so yellow curve is fully visible */}
+            <div className="lg:col-span-7 text-center lg:text-left space-y-6 lg:pl-8 xl:pl-10 relative z-20">
               
               {/* Bismillah in Arabic Calligraphy */}
               <div className="w-full select-none">
@@ -190,11 +188,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                 <Sparkles className="w-4 h-4 text-[#D4AF37] shrink-0" />
                 <span>Premier International Islamic Online Academy · 3-Day Free Trial Available</span>
               </div>
-
-              {/* Existing website description preserved with readable font size (16–18px) */}
-              <p className="text-base sm:text-lg text-slate-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Learn Quran reading, Tajweed, Memorization, Translation, and Arabic from certified male and female scholars from Al-Azhar and Islamic University of Madinah. Flexible timing across all time zones.
-              </p>
 
               {/* Action Buttons */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
@@ -243,13 +236,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
       </section>
 
       {/* Academy Statistics */}
-      <section className="relative py-12 bg-white/60 border-b border-slate-200/60">
+      <section className="relative py-12 bg-transparent border-b border-slate-200/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="text-center p-5 rounded-2xl bg-white/80 border border-slate-200/70 shadow-xs hover:bg-white transition-colors"
+                className="text-center p-5 rounded-2xl bg-white/90 border border-slate-200/80 shadow-xs hover:bg-white transition-colors"
               >
                 <div className="text-3xl sm:text-4xl md:text-5xl font-serif font-extrabold text-[#0A3826] tracking-tight">
                   {stat.value}
@@ -264,11 +257,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
       </section>
 
       {/* 3. Why Families Choose Us */}
-      <section className="relative py-20 bg-[#FAF8F5]/60">
-        <IslamicPattern variant="light" opacity={0.6} patternType="star8" />
-
+      <section className="relative py-20 bg-transparent">
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs sm:text-sm font-bold">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/10 text-[#0A3826] text-xs sm:text-sm font-bold">
             <Award className="w-4 h-4 text-[#C5A059]" />
             <span>Islamic Academic Excellence</span>
           </div>
@@ -277,7 +268,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
             Why Families Choose Us
           </h2>
 
-          <div className="p-8 sm:p-10 rounded-3xl bg-white/92 backdrop-blur-sm border border-slate-200/90 shadow-md text-center space-y-5">
+          <div className="p-8 sm:p-10 rounded-3xl bg-white/95 backdrop-blur-sm border border-slate-200/90 shadow-md text-center space-y-5">
             <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0A3826]">
               Qualified & Experienced Teachers
             </h3>
@@ -330,9 +321,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
       </section>
 
       {/* 4. Courses Section */}
-      <section className="relative py-20 bg-white/60">
-        <IslamicPattern variant="subtle" opacity={0.65} patternType="girih" />
-
+      <section className="relative py-20 bg-transparent">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 text-left">
             <div>
@@ -406,9 +395,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
       </section>
 
       {/* 5. How Your Journey Begins in 6 Simple Steps - Desktop */}
-      <section className="hidden md:block relative py-20 bg-[#FAF8F5]/60">
-        <IslamicPattern variant="light" opacity={0.6} patternType="star8" />
-
+      <section className="hidden md:block relative py-20 bg-transparent">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs sm:text-sm font-bold">
@@ -514,9 +501,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
       </section>
 
       {/* 5. Mobile View */}
-      <section className="block md:hidden relative py-8 px-4 bg-[#FAF8F5]/60 border-b border-slate-200/50">
-        <IslamicPattern variant="light" opacity={0.6} patternType="star8" />
-
+      <section className="block md:hidden relative py-8 px-4 bg-transparent border-b border-slate-200/50">
         <div className="relative max-w-sm mx-auto flex flex-col gap-3">
           <button
             onClick={() => onNavigate('how-it-works')}
@@ -557,9 +542,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
       </section>
 
       {/* 7. Student Reviews / Testimonials Section */}
-      <section className="relative py-20 bg-white/60">
-        <IslamicPattern variant="subtle" opacity={0.65} patternType="arabesque" />
-
+      <section className="relative py-20 bg-transparent">
         <div className="relative max-w-5xl mx-auto px-4 sm:px-8 text-center">
           <div className="space-y-3 mb-12">
             <span className="text-xs sm:text-sm font-bold text-[#C5A059] uppercase tracking-widest font-serif">

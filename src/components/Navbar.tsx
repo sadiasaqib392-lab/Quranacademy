@@ -13,9 +13,8 @@ import {
   Menu,
   X,
 } from 'lucide-react';
-import { Logo } from './Logo';
+import { IslamicLogo } from './IslamicLogo';
 import { PageRoute } from '../types';
-import { ACADEMY_CONFIG } from '../data/academyData';
 
 interface NavbarProps {
   currentPage: PageRoute;
@@ -81,146 +80,106 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full transition-all duration-300 shadow-md">
-      {/* Top Contact Strip */}
-      <div className="bg-[#0A3826] text-white text-xs sm:text-sm font-medium py-2 px-4 sm:px-8 border-b border-emerald-900/60 relative z-20">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="hidden md:flex items-center gap-3 text-emerald-100 text-xs sm:text-sm">
-            <span className="text-[#D4AF37] font-serif font-bold text-sm sm:text-base">
-              بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-            </span>
-            <span className="text-emerald-500">|</span>
-            <span className="font-medium">Online Quran Academy with Certified Scholars</span>
-          </div>
+    <header className="sticky top-0 z-40 w-full transition-all duration-300 shadow-md bg-white">
+      {/* Top Green Bar: Only WhatsApp and Email contact pills on the right, no Bismillah or Certified Scholars text */}
+      <div className="bg-[#072C1E] text-white py-1.5 px-4 sm:px-6 lg:px-8 border-b border-emerald-900/60 z-30">
+        <div className="max-w-7xl mx-auto flex items-center justify-end gap-2 sm:gap-3 text-xs">
+          {/* WhatsApp 1 */}
+          <a
+            href="https://wa.me/923096000449"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-900/70 hover:bg-emerald-800 text-white font-medium text-[11px] sm:text-xs transition-all shadow-xs"
+            title="WhatsApp: +92 309 6000449"
+          >
+            <svg className="w-3.5 h-3.5 fill-[#25D366] shrink-0" viewBox="0 0 24 24">
+              <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
+            </svg>
+            <span className="font-mono tracking-tight">+92 309 6000449</span>
+          </a>
 
-          {/* Right Contact Details */}
-          {isHome ? (
-            /* Home page specific contact details: WhatsApp +92 309 6000449, WhatsApp +92 318 7779954, Email info@quraneducation.uk, NO country flags */
-            <div className="flex items-center justify-end flex-wrap gap-3 sm:gap-4 ml-auto text-xs sm:text-sm">
-              {/* WhatsApp 1 */}
-              <a
-                href="https://wa.me/923096000449"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-900/60 hover:bg-emerald-800 text-emerald-100 hover:text-white transition-colors"
-                title="Chat on WhatsApp +92 309 6000449"
-              >
-                <svg className="w-3.5 h-3.5 fill-[#25D366] shrink-0" viewBox="0 0 24 24">
-                  <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
-                </svg>
-                <span className="font-mono font-medium text-xs sm:text-[13px]">+92 309 6000449</span>
-              </a>
+          {/* WhatsApp 2 */}
+          <a
+            href="https://wa.me/923187779954"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-900/70 hover:bg-emerald-800 text-white font-medium text-[11px] sm:text-xs transition-all shadow-xs"
+            title="WhatsApp: +92 318 7779954"
+          >
+            <svg className="w-3.5 h-3.5 fill-[#25D366] shrink-0" viewBox="0 0 24 24">
+              <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
+            </svg>
+            <span className="font-mono tracking-tight">+92 318 7779954</span>
+          </a>
 
-              {/* WhatsApp 2 */}
-              <a
-                href="https://wa.me/923187779954"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-900/60 hover:bg-emerald-800 text-emerald-100 hover:text-white transition-colors"
-                title="Chat on WhatsApp +92 318 7779954"
-              >
-                <svg className="w-3.5 h-3.5 fill-[#25D366] shrink-0" viewBox="0 0 24 24">
-                  <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
-                </svg>
-                <span className="font-mono font-medium text-xs sm:text-[13px]">+92 318 7779954</span>
-              </a>
-
-              {/* Email */}
-              <a
-                href="mailto:info@quraneducation.uk"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-900/60 hover:bg-emerald-800 text-emerald-100 hover:text-white transition-colors"
-                title="Email info@quraneducation.uk"
-              >
-                <Mail className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
-                <span className="font-sans font-medium text-xs sm:text-[13px]">info@quraneducation.uk</span>
-              </a>
-            </div>
-          ) : (
-            /* Other pages: preserve original international badges with flags */
-            <div className="flex items-center justify-end flex-wrap gap-2 sm:gap-3 text-xs ml-auto">
-              {/* UK */}
-              <a
-                href="tel:+448085310303"
-                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-900/60 hover:bg-emerald-800 text-emerald-100 hover:text-white transition-colors"
-              >
-                <span className="text-xs" role="img" aria-label="UK flag">🇬🇧</span>
-                <span className="font-mono text-xs">+44 808 531 0303</span>
-              </a>
-
-              {/* AUS */}
-              <a
-                href="tel:+61280035454"
-                className="hidden lg:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-900/60 hover:bg-emerald-800 text-emerald-100 hover:text-white transition-colors"
-              >
-                <span className="text-xs" role="img" aria-label="Australia flag">🇦🇺</span>
-                <span className="font-mono text-xs">61 (2) 8003 5454</span>
-              </a>
-
-              {/* USA */}
-              <a
-                href="tel:+13189310931"
-                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-900/60 hover:bg-emerald-800 text-emerald-100 hover:text-white transition-colors"
-              >
-                <span className="text-xs" role="img" aria-label="USA flag">🇺🇸</span>
-                <span className="font-mono text-xs">1 (318) 931 0931</span>
-              </a>
-
-              {/* WhatsApp */}
-              <a
-                href={ACADEMY_CONFIG.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#25D366]/20 hover:bg-[#25D366]/30 text-[#25D366] font-bold transition-colors"
-              >
-                <svg className="w-3.5 h-3.5 fill-[#25D366]" viewBox="0 0 24 24">
-                  <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
-                </svg>
-                <span className="font-mono text-xs text-white font-semibold">
-                  {ACADEMY_CONFIG.phone}
-                </span>
-              </a>
-            </div>
-          )}
+          {/* Email */}
+          <a
+            href="mailto:info@quraneducation.uk"
+            className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-900/70 hover:bg-emerald-800 text-white font-medium text-[11px] sm:text-xs transition-all shadow-xs"
+            title="Email: info@quraneducation.uk"
+          >
+            <Mail className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+            <span className="font-sans">info@quraneducation.uk</span>
+          </a>
         </div>
       </div>
 
-      {/* Main Bar with Golden Left Sweep Design */}
+      {/* Main Header Bar */}
       <div
         className={`w-full relative transition-all duration-300 bg-white ${
-          isScrolled ? 'py-1 shadow-lg' : 'py-0'
+          isScrolled ? 'py-0 shadow-lg' : 'py-0'
         }`}
       >
         <div className="w-full relative flex items-stretch justify-between">
-          {/* Golden Curved Sweep on Left */}
-          <div className="relative shrink-0 flex items-center pr-12 sm:pr-20 z-10">
-            {/* The Golden Background Polygon & Curved Edge */}
-            <div
-              className="absolute inset-0 bg-gradient-to-r from-[#D9A328] via-[#E2B338] to-[#F1C84D] shadow-md"
-              style={{
-                clipPath: 'polygon(0 0, 100% 0, 82% 100%, 0% 100%)',
-              }}
-            />
-
-            {/* Logo inside Golden Left Banner */}
-            <div className="relative z-20 py-2.5 sm:py-3.5 pl-4 sm:pl-8 lg:pl-12 pr-6">
+          
+          {/* Left Side: Golden Diagonal Badge matching user screenshot */}
+          <div
+            className="relative shrink-0 flex items-center z-20 py-2.5 sm:py-3.5 pl-4 sm:pl-6 lg:pl-8 pr-12 sm:pr-16 md:pr-20 bg-gradient-to-r from-[#D9A328] via-[#E2B338] to-[#EDB930]"
+            style={{
+              clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 100%, 0 100%)',
+            }}
+          >
+            {/* Logo + Quran Education + ONLINE QURAN ACADEMY */}
+            <div className="flex items-center gap-2.5 sm:gap-3.5">
               <a
                 href="#/home"
                 onClick={(e) => {
                   e.preventDefault();
                   onNavigate('home');
                 }}
-                className="focus:outline-hidden transition-transform hover:scale-102 cursor-pointer flex items-center"
+                className="shrink-0 focus:outline-hidden transition-transform hover:scale-105 cursor-pointer"
                 aria-label="Quran Education Home"
               >
-                <Logo size="md" variant="white" tagline="Online Quran Academy" isFooter={false} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 drop-shadow-md">
+                  <IslamicLogo className="w-full h-full" color="#FFFFFF" />
+                </div>
               </a>
+
+              <div className="flex flex-col text-left">
+                <a
+                  href="#/home"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('home');
+                  }}
+                  className="focus:outline-hidden cursor-pointer"
+                >
+                  <span className="text-xl sm:text-2xl font-serif font-black text-white tracking-wide leading-none drop-shadow-xs">
+                    Quran Education
+                  </span>
+                </a>
+                <span className="text-[11px] sm:text-xs text-amber-100 font-bold tracking-widest uppercase mt-0.5 font-serif">
+                  ONLINE QURAN ACADEMY
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Right Navigation & Action Items */}
-          <div className="flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8 relative z-10 bg-white/95">
+          {/* Right Navigation & Action Items: Pure, clean, white and open */}
+          <div className="flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8 relative z-10 bg-white">
             <div className="flex items-center justify-between gap-4">
-              {/* Desktop Nav Links with Proportional, Readable Font Size (15–16px) */}
+              
+              {/* Desktop Nav Links on Clean White Background */}
               <nav className="hidden lg:flex items-center justify-center gap-4 xl:gap-6 flex-1">
                 {navLinks.map((link) => {
                   const Icon = link.icon;
@@ -311,7 +270,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 })}
               </nav>
 
-              {/* Right Action: LOGIN Button ONLY on other pages; REMOVED on Home page */}
+              {/* Right Action: Clean & Open (No Login on Home) */}
               {!isHome && (
                 <div className="hidden sm:flex items-center gap-3 shrink-0 ml-auto">
                   <button
@@ -326,18 +285,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               {/* Mobile Menu Hamburger */}
               <div className="flex lg:hidden items-center gap-2 ml-auto">
-                {!isHome && (
-                  <button
-                    onClick={() => onOpenEnroll()}
-                    className="px-3 py-1.5 bg-[#0A3826] text-white rounded-full text-[11px] font-bold tracking-wider uppercase shadow-xs flex items-center gap-1"
-                  >
-                    <Lock className="w-3 h-3 text-[#D4AF37]" />
-                    <span>LOGIN</span>
-                  </button>
-                )}
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="p-2 text-slate-700 hover:text-[#0A3826] focus:outline-hidden rounded-lg"
+                  className="p-2 text-slate-700 hover:text-[#0A3826] focus:outline-hidden rounded-lg cursor-pointer"
                   aria-label="Toggle mobile menu"
                 >
                   {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -381,6 +331,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
+            {/* Direct Email Link on Mobile Menu */}
+            <a
+              href="mailto:info@quraneducation.uk"
+              className="flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-slate-50 text-slate-700 text-xs font-semibold"
+            >
+              <Mail className="w-4 h-4 text-[#D4AF37]" />
+              <span>info@quraneducation.uk</span>
+            </a>
+
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);

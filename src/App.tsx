@@ -99,7 +99,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF9F5] text-slate-800 font-sans selection:bg-[#0A3826] selection:text-white relative">
+    <div className="min-h-screen flex flex-col site-bg-pattern text-slate-800 font-sans selection:bg-[#0A3826] selection:text-white relative transition-all duration-300">
       {/* Sticky Navigation Bar */}
       <Navbar
         currentPage={currentPage}
@@ -112,10 +112,10 @@ export default function App() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentPage === 'course-detail' ? `course-${courseSlug}` : currentPage}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.22 }}
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 16 }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
           >
             {currentPage === 'home' && (
               <HomePage onNavigate={handleNavigate} onOpenEnroll={handleOpenEnroll} />

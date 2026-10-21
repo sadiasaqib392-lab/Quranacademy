@@ -1,15 +1,32 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: #FAF9F5;
+    /* Authentic Islamic lattice background pattern from uploaded asset WhatsApp_Image_original.jpeg */
+    background-image: url('/WhatsApp_Image_original.jpeg');
+    background-repeat: repeat;
+    background-position: top center;
+    background-size: 366px auto;
+    background-attachment: fixed;
   }
+
   .font-serif {
     font-family: 'Cinzel', Georgia, serif;
   }
+
   .font-arabic {
     font-family: 'Amiri', serif;
+  }
+
+  /* Universal smooth transitions across all links, buttons, and form inputs */
+  a, button, input, select, textarea {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
@@ -30,10 +47,51 @@
 
 /* Islamic Geometric Background Pattern Utility */
 .bg-islamic-pattern {
-  background-image: url('/WhatsApp%20Image%202026-09-25%20at%2010.20.39%20PM.jpeg');
+  background-image: url('/WhatsApp_Image_original.jpeg');
   background-repeat: repeat;
   background-position: center center;
   background-size: 366px 178px;
+}
+
+/* Site-wide Background Pattern class */
+.site-bg-pattern {
+  background-image: url('/WhatsApp_Image_original.jpeg');
+  background-repeat: repeat;
+  background-position: top center;
+  background-size: 366px auto;
+  background-attachment: fixed;
+}
+
+/* Smooth Horizontal Gradient Transition Animation */
+@keyframes horizontalGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-horizontal-gradient {
+  background-size: 200% 200%;
+  animation: horizontalGradientShift 8s ease-in-out infinite;
+}
+
+/* Horizontal Floating Motion */
+@keyframes horizontalSway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+.animate-horizontal-sway {
+  animation: horizontalSway 6s ease-in-out infinite;
 }
 
 @keyframes panPatternHorizontal {
@@ -48,4 +106,3 @@
 .animate-pattern-pan {
   animation: panPatternHorizontal 28s linear infinite;
 }
-

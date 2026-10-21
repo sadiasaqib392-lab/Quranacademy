@@ -21,7 +21,7 @@ export const IslamicPattern: React.FC<IslamicPatternProps> = ({
         className={`absolute inset-0 pointer-events-none select-none overflow-hidden ${className}`}
         style={{
           opacity: opacity !== undefined ? opacity : 0.12,
-          backgroundImage: `url('/WhatsApp%20Image%202026-09-25%20at%2010.20.39%20PM.jpeg')`,
+          backgroundImage: `url('/WhatsApp_Image_original.jpeg')`,
           backgroundRepeat: 'repeat',
           backgroundPosition: 'center center',
           backgroundSize: size ? `${size}px auto` : '366px 178px',
@@ -32,7 +32,7 @@ export const IslamicPattern: React.FC<IslamicPatternProps> = ({
     );
   }
 
-  // On light sections, the site-wide fixed background from WhatsApp Image is already beautifully visible!
+  // On light sections, the site-wide fixed background from WhatsApp_Image_original.jpeg is already beautifully visible!
   return null;
 };
 
