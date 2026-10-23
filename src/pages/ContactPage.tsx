@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import {
   Sparkles,
-  Phone,
   Mail,
   Clock,
   MapPin,
   Send,
   CheckCircle2,
-  MessageSquare,
   ExternalLink,
 } from 'lucide-react';
 import { IslamicPattern } from '../components/IslamicPattern';
@@ -104,39 +102,7 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 <div className="space-y-4 pt-2">
-                  {/* Direct Academy Phone: +92 309 6000449 */}
-                  <a
-                    href={`tel:${ACADEMY_CONFIG.phoneRaw}`}
-                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group"
-                  >
-                    <div className="w-11 h-11 rounded-2xl bg-emerald-900/60 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-slate-900 transition-colors">
-                      <Phone className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <span className="text-[11px] text-emerald-300/80 block">Direct Academy Phone</span>
-                      <span className="font-mono text-base font-bold text-white tracking-wide">
-                        {ACADEMY_CONFIG.phone}
-                      </span>
-                    </div>
-                  </a>
-
-                  {/* Email: info@quraneducation.uk */}
-                  <a
-                    href={`mailto:${ACADEMY_CONFIG.email}`}
-                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group"
-                  >
-                    <div className="w-11 h-11 rounded-2xl bg-emerald-900/60 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-slate-900 transition-colors">
-                      <Mail className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <span className="text-[11px] text-emerald-300/80 block">Email Inquiries</span>
-                      <span className="text-xs font-semibold text-white break-all">
-                        {ACADEMY_CONFIG.email}
-                      </span>
-                    </div>
-                  </a>
-
-                  {/* WhatsApp Support with "Click to Chat" Button */}
+                  {/* 1. WhatsApp Support with "Click to Chat" Button */}
                   <div className="flex items-start gap-4 text-emerald-100/90 pt-1">
                     <div className="w-11 h-11 rounded-2xl bg-[#25D366] text-white flex items-center justify-center shadow-md shrink-0">
                       <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
@@ -162,6 +128,62 @@ export const ContactPage: React.FC = () => {
                       </a>
                     </div>
                   </div>
+
+                  {/* 2. Instagram */}
+                  <a
+                    href={ACADEMY_CONFIG.socialLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group"
+                  >
+                    <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                      <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="text-[11px] text-emerald-300/80 block">Official Instagram</span>
+                      <span className="text-xs font-semibold text-white">
+                        @quraneducationacademy
+                      </span>
+                    </div>
+                  </a>
+
+                  {/* 3. Facebook Messenger */}
+                  <a
+                    href={ACADEMY_CONFIG.socialLinks.messenger}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group"
+                  >
+                    <div className="w-11 h-11 rounded-2xl bg-[#0084FF] text-white flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                      <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                        <path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.206V22l3.376-1.854c.91.252 1.88.388 2.889.388 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.042 12.443l-2.656-2.833-5.185 2.833 5.703-6.057 2.723 2.833 5.118-2.833-5.703 6.057z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="text-[11px] text-emerald-300/80 block">Facebook Messenger</span>
+                      <span className="text-xs font-semibold text-white">
+                        m.me/quraneducationacademy
+                      </span>
+                    </div>
+                  </a>
+
+                  {/* 4. Email: info@quraneducation.uk */}
+                  <a
+                    href={`mailto:${ACADEMY_CONFIG.email}`}
+                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group"
+                  >
+                    <div className="w-11 h-11 rounded-2xl bg-emerald-900/60 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-slate-900 transition-colors">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <span className="text-[11px] text-emerald-300/80 block">Email Inquiries</span>
+                      <span className="text-xs font-semibold text-white break-all">
+                        {ACADEMY_CONFIG.email}
+                      </span>
+                    </div>
+                  </a>
 
                   <div className="flex items-center gap-4 text-emerald-100/90 pt-2 border-t border-emerald-800/60">
                     <div className="w-11 h-11 rounded-2xl bg-emerald-900/60 flex items-center justify-center text-[#D4AF37]">
@@ -341,7 +363,7 @@ export const ContactPage: React.FC = () => {
                 </span>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                  {/* WhatsApp */}
+                  {/* 1. WhatsApp */}
                   <a
                     href={ACADEMY_CONFIG.whatsappUrl}
                     target="_blank"
@@ -354,29 +376,33 @@ export const ContactPage: React.FC = () => {
                     <span className="text-[11px] font-bold">WhatsApp</span>
                   </a>
 
-                  {/* Facebook Messenger */}
+                  {/* 2. Instagram */}
+                  <a
+                    href={ACADEMY_CONFIG.socialLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-white hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group"
+                  >
+                    <svg className="w-5 h-5 fill-[#E4405F] group-hover:fill-white transition-colors" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                    <span className="text-[11px] font-bold">Instagram</span>
+                  </a>
+
+                  {/* 3. Facebook Messenger */}
                   <a
                     href={ACADEMY_CONFIG.socialLinks.messenger}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-white hover:bg-blue-600 hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group"
+                    className="p-3 bg-white hover:bg-[#0084FF] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group"
                   >
-                    <svg className="w-5 h-5 fill-blue-600 group-hover:fill-white transition-colors" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 fill-[#0084FF] group-hover:fill-white transition-colors" viewBox="0 0 24 24">
                       <path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.206V22l3.376-1.854c.91.252 1.88.388 2.889.388 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.042 12.443l-2.656-2.833-5.185 2.833 5.703-6.057 2.723 2.833 5.118-2.833-5.703 6.057z" />
                     </svg>
                     <span className="text-[11px] font-bold">Messenger</span>
                   </a>
 
-                  {/* Direct Phone */}
-                  <a
-                    href={`tel:${ACADEMY_CONFIG.phoneRaw}`}
-                    className="p-3 bg-white hover:bg-[#0A3826] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group"
-                  >
-                    <Phone className="w-5 h-5 text-emerald-700 group-hover:text-white transition-colors" />
-                    <span className="text-[11px] font-bold">Phone Call</span>
-                  </a>
-
-                  {/* Email */}
+                  {/* 4. Email */}
                   <a
                     href={`mailto:${ACADEMY_CONFIG.email}`}
                     className="p-3 bg-white hover:bg-[#072C1E] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group"

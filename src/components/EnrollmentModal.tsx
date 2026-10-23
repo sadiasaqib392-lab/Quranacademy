@@ -123,8 +123,9 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
           </p>
         </div>
 
-        {/* Content Body */}
-        <div className="p-5 sm:p-7 max-h-[78vh] overflow-y-auto">
+        {/* Content Body with visible Islamic Pattern backdrop */}
+        <div className="relative p-5 sm:p-7 max-h-[78vh] overflow-y-auto bg-[#FAF9F5]/90 backdrop-blur-xs">
+          <IslamicPattern variant="light" opacity={0.38} />
           {isSubmitted ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}

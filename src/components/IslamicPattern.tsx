@@ -1,4 +1,5 @@
 import React from 'react';
+import { ISLAMIC_BG_PATTERN } from '../assets/bgPattern';
 
 interface IslamicPatternProps {
   variant?: 'light' | 'dark' | 'subtle';
@@ -14,25 +15,45 @@ export const IslamicPattern: React.FC<IslamicPatternProps> = ({
   className = '',
   size,
 }) => {
-  // If variant is dark, provide the subtle inverted gold/white accent for dark banners:
+  // Pattern sizing responsive to mobile vs desktop
+  const backgroundSize = size
+    ? `${size}px auto`
+    : variant === 'dark'
+    ? '280px auto'
+    : '320px auto';
+
   if (variant === 'dark') {
     return (
       <div
         className={`absolute inset-0 pointer-events-none select-none overflow-hidden ${className}`}
         style={{
-          opacity: opacity !== undefined ? opacity : 0.12,
-          backgroundImage: `url('/WhatsApp_Image_original.jpeg')`,
+          opacity: opacity !== undefined ? opacity : 0.14,
+          backgroundImage: `url("${ISLAMIC_BG_PATTERN}")`,
           backgroundRepeat: 'repeat',
           backgroundPosition: 'center center',
-          backgroundSize: size ? `${size}px auto` : '366px 178px',
-          filter: 'invert(1) brightness(1.6)',
+          backgroundSize,
+          filter: 'invert(1) brightness(1.7) contrast(1.1)',
         }}
         aria-hidden="true"
       />
     );
   }
 
-  // On light sections, the site-wide fixed background from WhatsApp_Image_original.jpeg is already beautifully visible!
-  return null;
-};
+  // Light and subtle variants - render clean, prominent, and sharp
+  const defaultOpacity = variant === 'subtle' ? 0.3 : 0.45;
+  const appliedOpacity = opacity !== undefined ? opacity : defaultOpacity;
 
+  return (
+    <div
+      className={`absolute inset-0 pointer-events-none select-none overflow-hidden ${className}`}
+      style={{
+        opacity: appliedOpacity,
+        backgroundImage: `url("${ISLAMIC_BG_PATTERN}")`,
+        backgroundRepeat: 'repeat',
+        backgroundPosition: 'top center',
+        backgroundSize,
+      }}
+      aria-hidden="true"
+    />
+  );
+};

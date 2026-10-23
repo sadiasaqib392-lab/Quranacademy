@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   Sparkles,
   ArrowRight,
@@ -23,6 +23,40 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) => {
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // 3 Distinct Slides with 2 different children per slide
+  const heroSlides = [
+    {
+      id: 1,
+      leftImage: '/assets/images/boy_quran_student_1792430316665.jpg',
+      leftAlt: 'Young boy student reciting Holy Quran on wooden rehal',
+      rightImage: '/assets/images/girl_black_hijab_quran_1792432274793.jpg',
+      rightAlt: 'Young girl in black hijab studying Holy Quran',
+    },
+    {
+      id: 2,
+      leftImage: '/assets/images/boy_holding_quran_1792430342987.jpg',
+      leftAlt: 'Young student holding Holy Quran with devotion',
+      rightImage: '/assets/images/girl_teal_hijab_1792430343468.jpg',
+      rightAlt: 'Young female student in teal hijab learning Quran',
+    },
+    {
+      id: 3,
+      leftImage: '/assets/images/girl_white_hijab_1792430342115.jpg',
+      leftAlt: 'Young student in white hijab reciting Holy Quran',
+      rightImage: '/assets/images/girl_online_laptop_1792430342816.jpg',
+      rightAlt: 'Young student attending online Quran class on laptop',
+    },
+  ];
+
+  // Automatic Slider Interval (every 4.5 seconds)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
 
   // Statistics
   const stats = [
@@ -125,7 +159,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Left Side: Golden Panel with Horizontal Transition & Overlapping Quran Reading Images */}
+            {/* Left Side: Golden Panel with Automatic 3-Slide Quran Learning Carousel */}
             <motion.div
               initial={{ x: -140, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -136,57 +170,81 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
               <div className="w-full lg:contents">
                 <div className="rounded-3xl lg:rounded-none bg-gradient-to-r from-[#D9A328] via-[#E2B338] to-[#F1C84D] animate-horizontal-gradient lg:bg-none p-6 sm:p-8 lg:p-0 text-white relative overflow-hidden shadow-lg lg:shadow-none">
                   
-                  {/* Overlapping Rounded Student Quran Reading Cards with Horizontal Transition */}
-                  <motion.div
-                    initial={{ x: -80, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.15, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative z-20 flex items-end justify-center lg:justify-start py-4 sm:py-6 lg:py-8 pl-0 sm:pl-2"
-                  >
-                    {/* Background Boy Student Card (Left) */}
-                    <div className="relative rounded-[2rem] overflow-hidden border-4 border-white/95 shadow-2xl w-36 sm:w-44 md:w-48 aspect-[3/4] bg-slate-800 shrink-0 -mr-8 sm:-mr-10 mb-2 z-10 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
-                      <img
-                        src="/assets/images/boy_quran_student_1792430316665.jpg"
-                        alt="Young student reciting Holy Quran on rehal"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  {/* Overlapping Rounded Student Quran Reading Cards with Automatic Slider */}
+                  <div className="relative z-20 flex flex-col items-center lg:items-start py-4 sm:py-6 lg:py-8 pl-0 sm:pl-2 w-full">
+                    <div className="relative h-[270px] sm:h-[330px] md:h-[360px] w-full flex items-end justify-center lg:justify-start">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentSlide}
+                          initial={{ opacity: 0, x: 45 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -45 }}
+                          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                          className="flex items-end justify-center lg:justify-start"
+                        >
+                          {/* Background Student Card (Left) */}
+                          <div className="relative rounded-[2rem] overflow-hidden border-4 border-white/95 shadow-2xl w-36 sm:w-44 md:w-48 aspect-[3/4] bg-slate-800 shrink-0 -mr-8 sm:-mr-10 mb-2 z-10 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                            <img
+                              src={heroSlides[currentSlide].leftImage}
+                              alt={heroSlides[currentSlide].leftAlt}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                          </div>
+
+                          {/* Foreground Student Card (Right) */}
+                          <div className="relative rounded-[2.3rem] overflow-hidden border-4 border-white shadow-2xl w-48 sm:w-56 md:w-64 aspect-[3/4] bg-slate-900 shrink-0 z-20 transform hover:scale-[1.02] transition-transform duration-300">
+                            <img
+                              src={heroSlides[currentSlide].rightImage}
+                              alt={heroSlides[currentSlide].rightAlt}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                          </div>
+                        </motion.div>
+                      </AnimatePresence>
                     </div>
 
-                    {/* Foreground Girl Student in Black Hijab Card (Right) */}
-                    <div className="relative rounded-[2.3rem] overflow-hidden border-4 border-white shadow-2xl w-48 sm:w-56 md:w-64 aspect-[3/4] bg-slate-900 shrink-0 z-20 transform hover:scale-[1.02] transition-transform duration-300">
-                      <img
-                        src="/assets/images/girl_black_hijab_quran_1792432274793.jpg"
-                        alt="Young girl in black hijab studying Holy Quran on wooden rehal stand"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    {/* Automatic Slide Indicators (3 Dots) */}
+                    <div className="flex items-center gap-2 mt-4 z-30 self-center lg:self-start lg:pl-10">
+                      {heroSlides.map((slide, idx) => (
+                        <button
+                          key={slide.id}
+                          onClick={() => setCurrentSlide(idx)}
+                          className={`transition-all duration-300 rounded-full cursor-pointer ${
+                            currentSlide === idx
+                              ? 'w-7 h-2 bg-[#0A3826] shadow-sm'
+                              : 'w-2 h-2 bg-slate-400/70 hover:bg-slate-700'
+                          }`}
+                          aria-label={`Switch to slide ${idx + 1}`}
+                        />
+                      ))}
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Right Side: Clean Background with Bismillah, Title & CTA - No white overlay box so yellow curve is fully visible */}
-            <div className="lg:col-span-7 text-center lg:text-left space-y-6 lg:pl-8 xl:pl-10 relative z-20">
+            {/* Right Side: Clean Background with Bismillah, Title & CTA */}
+            <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 lg:pl-8 xl:pl-10 relative z-20">
               
-              {/* Bismillah in Arabic Calligraphy */}
-              <div className="w-full select-none">
-                <div className="font-arabic text-2xl sm:text-3xl md:text-4xl text-[#0A3826] font-bold tracking-wider inline-block">
+              {/* Bismillah Centered Directly Above 'Online Quran Academy' Title */}
+              <div className="inline-flex flex-col items-center text-center select-none">
+                <div className="font-arabic text-2xl sm:text-3xl md:text-4xl text-[#0A3826] font-bold tracking-wider leading-relaxed">
                   بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
                 </div>
-              </div>
 
-              {/* Main Heading in elegant dark green and gold typography */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-serif font-extrabold leading-[1.15] tracking-tight">
-                <span className="text-[#072C1E]">Online </span>
-                <span className="text-[#D4AF37]">Quran Academy</span>
-              </h1>
+                {/* Main Heading in elegant dark green and gold typography */}
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-serif font-extrabold leading-[1.15] tracking-tight mt-1 text-center">
+                  <span className="text-[#072C1E]">Online </span>
+                  <span className="text-[#D4AF37]">Quran Academy</span>
+                </h1>
+              </div>
 
               {/* Premier International Islamic Online Academy Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0A3826] text-[#D4AF37] text-xs sm:text-sm font-bold shadow-md">
                 <Sparkles className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                <span>Premier International Islamic Online Academy · 3-Day Free Trial Available</span>
+                <span>Premier International Islamic Online Academy</span>
               </div>
 
               {/* Action Buttons */}
@@ -214,19 +272,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                 </a>
               </div>
 
-              {/* Key Trust Badges */}
-              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-sm font-medium text-slate-600">
+              {/* Key Trust Badges - 4 Highlights including Cost Effective */}
+              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-5 text-sm font-medium text-slate-600">
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
                   1-on-1 Personalized Classes
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
                   Male & Female Certified Scholars
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
                   Flexible 24/7 Global Timing
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                  Cost Effective
                 </span>
               </div>
             </div>
@@ -437,30 +499,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                     {step.desc}
                   </p>
                 </div>
-
-                {step.num === '01' && (
-                  <div className="pt-4 mt-4 border-t border-slate-200/70 flex flex-col sm:flex-row gap-2">
-                    <button
-                      onClick={() => onNavigate('contact')}
-                      className="flex-1 py-2 px-3 bg-[#0A3826] hover:bg-[#072C1E] text-white text-xs font-bold rounded-lg text-center transition-colors shadow-2xs cursor-pointer"
-                    >
-                      Contact Academy
-                    </button>
-                    <a
-                      href={`${ACADEMY_CONFIG.whatsappUrl}?text=${encodeURIComponent(
-                        'As-salamu alaykum! I would like to inquire about enrolling at Quran Education Academy.'
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 py-2 px-3 bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold rounded-lg text-center transition-colors shadow-2xs flex items-center justify-center gap-1"
-                    >
-                      <svg className="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
-                        <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
-                      </svg>
-                      <span>WhatsApp</span>
-                    </a>
-                  </div>
-                )}
               </div>
             ))}
           </div>

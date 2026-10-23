@@ -1,8 +1,6 @@
-import React from 'react';
-import { Sparkles, Award, ShieldCheck, Heart, BookOpen, Globe2, ArrowRight } from 'lucide-react';
+import { Sparkles, Award, ShieldCheck, Heart, BookOpen } from 'lucide-react';
 import { IslamicPattern } from '../components/IslamicPattern';
 import { PageRoute } from '../types';
-import { ACADEMY_CONFIG } from '../data/academyData';
 
 interface AboutPageProps {
   onNavigate: (page: PageRoute) => void;
@@ -163,32 +161,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenEnroll }
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Authentic Sanad & Ijazah Section */}
-      <section className="relative py-20 bg-[#072C1E] text-white overflow-hidden">
-        <IslamicPattern variant="dark" opacity={0.08} patternType="star8" />
-
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-8 text-center space-y-6">
-          <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-widest font-serif">
-            Unbroken Chain of Transmission
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
-            The Sanctity of Ijazah & Sanad Mutassil
-          </h2>
-          <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed max-w-2xl mx-auto">
-            In classical Islamic pedagogy, the Holy Quran cannot be acquired merely through self-reading. It must be received orally from mouth-to-ear through an unbroken chain of qualified scholars connecting directly to the Messenger of Allah (PBUH). Our senior scholars hold authentic Sanad in the Ten Qira’at.
-          </p>
-
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => onOpenEnroll()}
-              className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] hover:from-[#E5BE48] hover:to-[#D4AF37] text-slate-900 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-lg cursor-pointer"
-            >
-              Experience 1-on-1 Class
-            </button>
           </div>
         </div>
       </section>

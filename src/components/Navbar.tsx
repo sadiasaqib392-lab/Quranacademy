@@ -13,7 +13,6 @@ import {
   Menu,
   X,
 } from 'lucide-react';
-import { IslamicLogo } from './IslamicLogo';
 import { PageRoute } from '../types';
 
 interface NavbarProps {
@@ -41,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const isHome = currentPage === 'home';
 
-  // Navigation Links: Home, About, Courses, How It Works, Packages, Blog, FAQ, Contact
+  // Navigation Links: Home, Courses, About, How It Works, Packages, Blog, FAQ, Enroll
   const navLinks: {
     label: string;
     page: PageRoute;
@@ -50,13 +49,14 @@ export const Navbar: React.FC<NavbarProps> = ({
     isAction?: boolean;
   }[] = [
     { label: 'HOME', page: 'home', icon: Home },
-    { label: 'ABOUT', page: 'about', icon: Star },
     { label: 'COURSES', page: 'courses', icon: BookOpen, hasDropdown: true },
+    { label: 'ABOUT', page: 'about', icon: Star },
     { label: 'HOW IT WORKS', page: 'how-it-works', icon: Sparkles },
     { label: 'PACKAGES', page: 'pricing', icon: Bookmark },
     { label: 'BLOG', page: 'blog', icon: LayoutGrid },
     { label: 'FAQ', page: 'faq', icon: HelpCircle },
     { label: 'CONTACT', page: 'contact', icon: Mail },
+    { label: 'ENROLL', page: 'admissions', icon: Sparkles, isAction: true },
   ];
 
   // Quick course list for the dropdown
@@ -80,8 +80,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full transition-all duration-300 shadow-md bg-white">
-      {/* Top Green Bar: Only WhatsApp and Email contact pills on the right, no Bismillah or Certified Scholars text */}
+    <header className="sticky top-0 z-40 w-full transition-all duration-300 shadow-sm bg-white">
+      {/* Top Green Bar: Only WhatsApp and Email contact pills on the right */}
       <div className="bg-[#072C1E] text-white py-1.5 px-4 sm:px-6 lg:px-8 border-b border-emerald-900/60 z-30">
         <div className="max-w-7xl mx-auto flex items-center justify-end gap-2 sm:gap-3 text-xs">
           {/* WhatsApp 1 */}
@@ -124,179 +124,146 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Main Header Bar */}
+      {/* Main Header Bar: Pure White */}
       <div
         className={`w-full relative transition-all duration-300 bg-white ${
-          isScrolled ? 'py-0 shadow-lg' : 'py-0'
+          isScrolled ? 'py-1 shadow-md' : 'py-1.5'
         }`}
       >
-        <div className="w-full relative flex items-stretch justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           
-          {/* Left Side: Golden Diagonal Badge matching user screenshot */}
-          <div
-            className="relative shrink-0 flex items-center z-20 py-2.5 sm:py-3.5 pl-4 sm:pl-6 lg:pl-8 pr-12 sm:pr-16 md:pr-20 bg-gradient-to-r from-[#D9A328] via-[#E2B338] to-[#EDB930]"
-            style={{
-              clipPath: 'polygon(0 0, calc(100% - 32px) 0, 100% 100%, 0 100%)',
-            }}
-          >
-            {/* Logo + Quran Education + ONLINE QURAN ACADEMY */}
-            <div className="flex items-center gap-2.5 sm:gap-3.5">
+          {/* Left Side: Pure White Background with Yellow Logo + Yellow "Quran Education" + Black Subtitle under "Education" */}
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 py-1">
+            <a
+              href="#/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 focus:outline-hidden transition-transform hover:scale-105 cursor-pointer"
+              aria-label="Quran Education Home"
+            >
+              <img
+                src="/logo.png"
+                alt="Quran Education Logo"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain drop-shadow-xs"
+              />
+            </a>
+
+            <div className="flex flex-col text-left">
               <a
                 href="#/home"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onNavigate('home');
-                }}
-                className="shrink-0 focus:outline-hidden transition-transform hover:scale-105 cursor-pointer"
-                aria-label="Quran Education Home"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="focus:outline-hidden cursor-pointer"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 drop-shadow-md">
-                  <IslamicLogo className="w-full h-full" color="#FFFFFF" />
-                </div>
+                <span className="text-xl sm:text-2xl font-serif font-black text-[#E5A910] tracking-tight leading-none">
+                  Quran Education
+                </span>
               </a>
-
-              <div className="flex flex-col text-left">
-                <a
-                  href="#/home"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate('home');
-                  }}
-                  className="focus:outline-hidden cursor-pointer"
-                >
-                  <span className="text-xl sm:text-2xl font-serif font-black text-white tracking-wide leading-none drop-shadow-xs">
-                    Quran Education
-                  </span>
-                </a>
-                <span className="text-[11px] sm:text-xs text-amber-100 font-bold tracking-widest uppercase mt-0.5 font-serif">
-                  ONLINE QURAN ACADEMY
+              {/* Sits compactly right under 'Education' */}
+              <div className="w-full flex justify-end">
+                <span className="text-[9px] sm:text-[9.5px] text-black font-extrabold tracking-wider uppercase mt-0.5 font-sans leading-none">
+                  Online Quran Academy
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Right Navigation & Action Items: Pure, clean, white and open */}
-          <div className="flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8 relative z-10 bg-white">
-            <div className="flex items-center justify-between gap-4">
-              
-              {/* Desktop Nav Links on Clean White Background */}
-              <nav className="hidden lg:flex items-center justify-center gap-4 xl:gap-6 flex-1">
-                {navLinks.map((link) => {
-                  const Icon = link.icon;
-                  const isActive = currentPage === link.page;
+          {/* Center/Right Navigation: Less bold, reduced width & compact spacing */}
+          <div className="flex items-center gap-3">
+            {/* Desktop Nav Links */}
+            <nav className="hidden lg:flex items-center gap-2 xl:gap-3.5">
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                const isActive = currentPage === link.page;
+                const targetHash = link.page === 'pricing' ? 'packages' : link.page === 'admissions' ? 'enroll' : link.page;
 
-                  if (link.hasDropdown) {
-                    return (
-                      <div
-                        key={link.label}
-                        className="relative"
-                        onMouseEnter={() => setIsCoursesDropdownOpen(true)}
-                        onMouseLeave={() => setIsCoursesDropdownOpen(false)}
-                      >
-                        <a
-                          href={`#/${link.page}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavClick(link.page);
-                          }}
-                          className={`flex items-center gap-1.5 text-[15px] xl:text-[16px] font-bold tracking-wide uppercase transition-colors py-2 cursor-pointer ${
-                            isActive
-                              ? 'text-[#0A3826] font-extrabold'
-                              : 'text-slate-700 hover:text-[#0A3826]'
-                          }`}
-                        >
-                          <Icon className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                          <span>{link.label}</span>
-                          <ChevronDown className="w-3.5 h-3.5 text-slate-400 ml-0.5" />
-                        </a>
-
-                        {/* Courses Dropdown Menu */}
-                        {isCoursesDropdownOpen && (
-                          <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-slate-200/80 py-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150 text-left">
-                            <div className="px-3.5 py-1.5 text-xs font-bold text-[#D4AF37] uppercase tracking-wider font-serif border-b border-slate-100">
-                              Available Courses
-                            </div>
-                            {featuredCourses.map((c) => (
-                              <a
-                                key={c.slug}
-                                href={`#/course/${c.slug}`}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  onNavigate('course-detail', c.slug);
-                                  setIsCoursesDropdownOpen(false);
-                                }}
-                                className="block px-3.5 py-2 text-sm font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#0A3826] transition-colors cursor-pointer"
-                              >
-                                {c.name}
-                              </a>
-                            ))}
-                            <div className="mt-1 pt-1 border-t border-slate-100">
-                              <a
-                                href="#/courses"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  onNavigate('courses');
-                                  setIsCoursesDropdownOpen(false);
-                                }}
-                                className="block px-3.5 py-1.5 text-xs font-bold text-[#0A3826] hover:underline cursor-pointer"
-                              >
-                                View All Courses →
-                              </a>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  }
-
+                if (link.hasDropdown) {
                   return (
-                    <a
+                    <div
                       key={link.label}
-                      href={`#/${link.page}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick(link.page);
-                      }}
-                      className={`flex items-center gap-1.5 text-[15px] xl:text-[16px] font-bold tracking-wide uppercase transition-colors py-2 cursor-pointer whitespace-nowrap ${
-                        isActive
-                          ? 'text-[#0A3826] font-extrabold'
-                          : 'text-slate-700 hover:text-[#0A3826]'
-                      }`}
+                      className="relative"
+                      onMouseEnter={() => setIsCoursesDropdownOpen(true)}
+                      onMouseLeave={() => setIsCoursesDropdownOpen(false)}
                     >
-                      <Icon className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                      <span>{link.label}</span>
-                    </a>
+                      <a
+                        href={`#/${targetHash}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-1 text-[13px] xl:text-[14px] font-medium tracking-normal transition-colors py-1.5 px-1.5 cursor-pointer ${
+                          isActive
+                            ? 'text-[#0A3826] font-semibold'
+                            : 'text-slate-700 hover:text-[#0A3826]'
+                        }`}
+                      >
+                        <Icon className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                        <span>{link.label}</span>
+                        <ChevronDown className="w-3 h-3 text-slate-400 ml-0.5" />
+                      </a>
+
+                      {/* Courses Dropdown Menu */}
+                      {isCoursesDropdownOpen && (
+                        <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-slate-200/80 py-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150 text-left">
+                          <div className="px-3.5 py-1.5 text-xs font-bold text-[#D4AF37] uppercase tracking-wider font-serif border-b border-slate-100">
+                            Available Courses
+                          </div>
+                          {featuredCourses.map((c) => (
+                            <a
+                              key={c.slug}
+                              href={`#/course/${c.slug}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setIsCoursesDropdownOpen(false)}
+                              className="block px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#0A3826] transition-colors cursor-pointer"
+                            >
+                              {c.name}
+                            </a>
+                          ))}
+                          <div className="mt-1 pt-1 border-t border-slate-100">
+                            <a
+                              href="#/courses"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setIsCoursesDropdownOpen(false)}
+                              className="block px-3.5 py-1.5 text-xs font-bold text-[#0A3826] hover:underline cursor-pointer"
+                            >
+                              View All Courses →
+                            </a>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   );
-                })}
-              </nav>
+                }
 
-              {/* Right Action: Clean & Open (No Login on Home) */}
-              {!isHome && (
-                <div className="hidden sm:flex items-center gap-3 shrink-0 ml-auto">
-                  <button
-                    onClick={() => onOpenEnroll()}
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#0A3826] hover:bg-[#072C1E] text-white text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 cursor-pointer whitespace-nowrap"
+                return (
+                  <a
+                    key={link.label}
+                    href={`#/${targetHash}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-1 text-[13px] xl:text-[14px] font-medium tracking-normal transition-colors py-1.5 px-1.5 cursor-pointer whitespace-nowrap ${
+                      isActive
+                        ? 'text-[#0A3826] font-semibold'
+                        : 'text-slate-700 hover:text-[#0A3826]'
+                    }`}
                   >
-                    <Lock className="w-3.5 h-3.5 text-[#D4AF37]" />
-                    <span>LOGIN</span>
-                  </button>
-                </div>
-              )}
+                    <Icon className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                    <span>{link.label}</span>
+                  </a>
+                );
+              })}
+            </nav>
 
-              {/* Mobile Menu Hamburger */}
-              <div className="flex lg:hidden items-center gap-2 ml-auto">
-                <button
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="p-2 text-slate-700 hover:text-[#0A3826] focus:outline-hidden rounded-lg cursor-pointer"
-                  aria-label="Toggle mobile menu"
-                >
-                  {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
-              </div>
+            {/* Mobile Menu Hamburger */}
+            <div className="flex lg:hidden items-center ml-auto">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 text-slate-700 hover:text-[#0A3826] focus:outline-hidden rounded-lg cursor-pointer"
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
-
-            {/* Subtle Gold Underline underneath Nav Links */}
-            <div className="hidden lg:block w-full h-[1px] bg-gradient-to-r from-[#D4AF37]/50 via-[#E2B338]/30 to-transparent mt-1" />
           </div>
         </div>
       </div>
@@ -308,15 +275,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = currentPage === link.page;
+              const targetHash = link.page === 'pricing' ? 'packages' : link.page === 'admissions' ? 'enroll' : link.page;
               return (
                 <a
                   key={link.label}
-                  href={`#/${link.page}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsMobileMenuOpen(false);
-                    handleNavClick(link.page);
-                  }}
+                  href={`#/${targetHash}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className={`flex items-center gap-3 text-base font-bold uppercase py-2.5 px-3.5 rounded-xl transition-colors cursor-pointer ${
                     isActive
                       ? 'bg-emerald-50 text-[#0A3826]'
@@ -340,15 +306,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>info@quraneducation.uk</span>
             </a>
 
-            <button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                onOpenEnroll();
-              }}
-              className="w-full py-3 bg-gradient-to-r from-[#0A3826] to-[#072C1E] text-white rounded-xl text-sm font-bold uppercase tracking-wider shadow-md"
+            <a
+              href="#/enroll"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full py-3 bg-gradient-to-r from-[#0A3826] to-[#072C1E] text-white rounded-xl text-sm font-bold uppercase tracking-wider shadow-md text-center block"
             >
               Book 3-Day Free Trial
-            </button>
+            </a>
           </div>
         </div>
       )}

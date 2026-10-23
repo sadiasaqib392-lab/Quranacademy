@@ -101,11 +101,12 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start text-left">
             {/* Left Form */}
-            <div className="lg:col-span-8 bg-white/92 backdrop-blur-sm p-6 sm:p-10 rounded-3xl border border-slate-200/90 shadow-md">
-              <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#072C1E] mb-2">
+            <div className="lg:col-span-8 bg-[#FAF9F5]/92 backdrop-blur-sm p-6 sm:p-10 rounded-3xl border border-slate-200/90 shadow-md relative overflow-hidden">
+              <IslamicPattern variant="light" opacity={0.32} className="rounded-3xl pointer-events-none" />
+              <h3 className="relative z-10 text-xl sm:text-2xl font-serif font-bold text-[#072C1E] mb-2">
                 Online Enrollment Form
               </h3>
-              <p className="text-xs text-slate-600 mb-6">
+              <p className="relative z-10 text-xs text-slate-600 mb-6">
                 Fill in the details below. You can also open and submit directly in WhatsApp with 1 click.
               </p>
 

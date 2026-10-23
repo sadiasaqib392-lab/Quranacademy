@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
+:root {
+  --bg-pattern-data: url("/WhatsApp_Image_original.jpeg");
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: #FAF9F5;
-    /* Authentic Islamic lattice background pattern from uploaded asset WhatsApp_Image_original.jpeg */
-    background-image: url('/WhatsApp_Image_original.jpeg');
-    background-repeat: repeat;
-    background-position: top center;
-    background-size: 366px auto;
-    background-attachment: fixed;
+    color: #1E293B;
+    overflow-x: hidden;
   }
 
   .font-serif {
@@ -30,7 +31,7 @@
   }
 }
 
-/* Custom scrollbar and animations */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -45,21 +46,48 @@
   background: #072C1E;
 }
 
-/* Islamic Geometric Background Pattern Utility */
-.bg-islamic-pattern {
-  background-image: url('/WhatsApp_Image_original.jpeg');
-  background-repeat: repeat;
-  background-position: center center;
-  background-size: 366px 178px;
-}
-
-/* Site-wide Background Pattern class */
-.site-bg-pattern {
-  background-image: url('/WhatsApp_Image_original.jpeg');
+/* Fixed Background Viewport Layer - Perfectly smooth and responsive on iOS, Android & Desktop */
+.site-bg-pattern-layer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/WhatsApp_Image_original.jpeg");
   background-repeat: repeat;
   background-position: top center;
-  background-size: 366px auto;
-  background-attachment: fixed;
+  background-size: 320px auto;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+@media (max-width: 640px) {
+  .site-bg-pattern-layer {
+    background-size: 250px auto;
+    opacity: 0.85;
+  }
+}
+
+/* Islamic Geometric Background Pattern Utility */
+.bg-islamic-pattern {
+  background-image: url("/WhatsApp_Image_original.jpeg");
+  background-repeat: repeat;
+  background-position: center center;
+  background-size: 320px auto;
+}
+
+@media (max-width: 640px) {
+  .bg-islamic-pattern {
+    background-size: 240px auto;
+  }
+}
+
+/* Form background container utility */
+.form-pattern-bg {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 /* Smooth Horizontal Gradient Transition Animation */
@@ -99,7 +127,7 @@
     background-position: 0px 0px;
   }
   100% {
-    background-position: 366px 0px;
+    background-position: 320px 0px;
   }
 }
 

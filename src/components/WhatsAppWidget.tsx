@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, MessageCircle } from 'lucide-react';
 import { ACADEMY_CONFIG } from '../data/academyData';
+import { IslamicPattern } from './IslamicPattern';
 
 export const WhatsAppWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,8 +19,9 @@ export const WhatsAppWidget: React.FC = () => {
             initial={{ opacity: 0, y: 12, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.95 }}
-            className="bg-white rounded-2xl shadow-2xl p-4 sm:p-5 border border-emerald-100 max-w-[280px] sm:max-w-xs text-left relative"
+            className="bg-[#FAF9F5]/95 backdrop-blur-md rounded-2xl shadow-2xl p-4 sm:p-5 border border-emerald-900/15 max-w-[280px] sm:max-w-xs text-left relative overflow-hidden"
           >
+            <IslamicPattern variant="light" opacity={0.35} className="rounded-2xl" />
             <button
               onClick={() => setIsOpen(false)}
               className="absolute top-2.5 right-2.5 text-slate-400 hover:text-slate-700 p-1 rounded-full transition-colors"

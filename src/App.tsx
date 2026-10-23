@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
 import { EnrollmentModal } from './components/EnrollmentModal';
+import { ISLAMIC_BG_PATTERN } from './assets/bgPattern';
 
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -79,16 +80,57 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const handleNavigate = (page: PageRoute, slug?: string) => {
-    if (page === 'course-detail' && slug) {
-      setCourseSlug(slug);
-      setCurrentPage('course-detail');
-      window.location.hash = `#/course/${slug}`;
+  // Sync document title and favicon dynamically for every open page/tab
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      home: 'Home | Quran Education - Online Quran Academy',
+      courses: 'All Courses | Quran Education',
+      about: 'About Us | Quran Education',
+      'how-it-works': 'How It Works | Quran Education',
+      pricing: 'Packages & Tuition | Quran Education',
+      admissions: 'Enroll in 3-Day Free Trial | Quran Education',
+      blog: 'Islamic Blog & Guides | Quran Education',
+      faq: 'FAQ | Quran Education',
+      contact: 'Contact Us | Quran Education',
+      teachers: 'Our Certified Scholars | Quran Education',
+      testimonials: 'Student Reviews & Success Stories | Quran Education',
+      privacy: 'Privacy Policy | Quran Education',
+      terms: 'Terms of Service | Quran Education',
+    };
+
+    if (currentPage === 'course-detail' && courseSlug) {
+      const courseTitles: Record<string, string> = {
+        'noorani-qaida': 'Noorani Qaida Course | Quran Education',
+        'quran-reading': 'Quran Reading (Nazra) Course | Quran Education',
+        'quran-tajweed': 'Quran with Tajweed Course | Quran Education',
+        'quran-memorization': 'Quran Memorization (Hifz) | Quran Education',
+        'quran-translation': 'Quran Translation Course | Quran Education',
+        'basic-arabic': 'Basic Arabic Language Course | Quran Education',
+        'islamic-studies': 'Islamic Studies & Duas | Quran Education',
+        'ten-qiraat': 'Ten Qira’at Course | Quran Education',
+      };
+      document.title = courseTitles[courseSlug] || 'Course Details | Quran Education';
     } else {
-      setCurrentPage(page);
-      window.location.hash = `#/${page}`;
+      document.title = titles[currentPage] || 'Quran Education | Online Islamic Academy';
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Ensure tab favicon is set to logo.png
+    let link = document.querySelector<HTMLLinkElement>("link[rel*='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+    }
+    link.type = 'image/png';
+    link.href = '/logo.png';
+  }, [currentPage, courseSlug]);
+
+  const handleNavigate = (page: PageRoute, slug?: string) => {
+    const targetHash =
+      page === 'course-detail' && slug
+        ? `#/course/${slug}`
+        : `#/${page === 'pricing' ? 'packages' : page === 'admissions' ? 'enroll' : page}`;
+    window.open(targetHash, '_blank');
   };
 
   const handleOpenEnroll = (courseId?: string) => {
@@ -99,7 +141,14 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col site-bg-pattern text-slate-800 font-sans selection:bg-[#0A3826] selection:text-white relative transition-all duration-300">
+    <div className="min-h-screen flex flex-col text-slate-800 font-sans selection:bg-[#0A3826] selection:text-white relative transition-all duration-300">
+      {/* Universal Fixed Islamic Geometric Pattern Viewport Layer - 100% Mobile & Desktop Compatible */}
+      <div
+        className="site-bg-pattern-layer"
+        style={{ backgroundImage: `url("${ISLAMIC_BG_PATTERN}")` }}
+        aria-hidden="true"
+      />
+
       {/* Sticky Navigation Bar */}
       <Navbar
         currentPage={currentPage}
