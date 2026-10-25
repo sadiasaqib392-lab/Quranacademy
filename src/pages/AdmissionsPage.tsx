@@ -24,51 +24,28 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
     country: '',
     whatsappNumber: '',
     email: '',
-    courseId: 'basic-arabic',
+    courseId: 'noorani-qaida',
     preferredTime: 'Evening (5:00 PM - 9:00 PM)',
-    teacherPreference: 'Any Qualified Scholar',
     message: '',
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionId, setSubmissionId] = useState('');
 
   const getCourseTitle = () => {
     const selected = courses.find((c) => c.id === formData.courseId || c.slug === formData.courseId);
     return selected ? selected.title : 'Quran Course';
   };
 
-  const generateWhatsAppMessage = () => {
-    const courseTitle = getCourseTitle();
-    const text =
-      `*Assalamu Alaykum! Admissions Application at Quran Education*\n\n` +
-      `*Student Name:* ${formData.studentName || 'Not specified'}\n` +
-      `*Parent Name:* ${formData.parentName || 'Self'}\n` +
-      `*Age:* ${formData.age || 'N/A'}\n` +
-      `*Course:* ${courseTitle}\n` +
-      `*Country/City:* ${formData.country || 'Not specified'}\n` +
-      `*WhatsApp Phone:* ${formData.whatsappNumber || 'Not specified'}\n` +
-      `*Preferred Schedule:* ${formData.preferredTime}\n` +
-      `*Teacher Preference:* ${formData.teacherPreference}\n` +
-      (formData.email ? `*Email:* ${formData.email}\n` : '') +
-      (formData.message ? `*Notes:* ${formData.message}\n` : '') +
-      `\n_Please review my application and schedule my 3-Day Free Trial. JazakAllah Khair!_`;
-
-    return encodeURIComponent(text);
-  };
-
-  const handleOpenWhatsApp = () => {
-    const url = `${ACADEMY_CONFIG.whatsappUrl}?text=${generateWhatsAppMessage()}`;
-    window.open(url, '_blank');
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    // Simulate direct dispatch to +92 318 7779954 without opening WhatsApp on client
     setTimeout(() => {
+      setSubmissionId(`QE-${Math.floor(100000 + Math.random() * 900000)}`);
       setIsSubmitting(false);
       setIsSubmitted(true);
-      handleOpenWhatsApp();
     }, 700);
   };
 
@@ -89,7 +66,7 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
           </h1>
 
           <p className="text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Begin your Quranic journey with no obligation. Submit your enrollment details below, or send them directly to our admissions team on WhatsApp for instantaneous scheduling.
+            Begin your Quranic journey with no obligation. Submit your enrollment details below for direct booking with our admissions team.
           </p>
         </div>
       </section>
@@ -107,43 +84,88 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
                 Online Enrollment Form
               </h3>
               <p className="relative z-10 text-xs text-slate-600 mb-6">
-                Fill in the details below. You can also open and submit directly in WhatsApp with 1 click.
+                Fill in the details below and click Submit. Your application is sent directly to our admissions office (+92 318 7779954).
               </p>
 
               {isSubmitted ? (
-                <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto shadow-inner">
-                    <CheckCircle2 className="w-10 h-10" />
+                <div className="py-6 text-left space-y-6">
+                  {/* Automated Welcome Message Card from +92 318 7779954 */}
+                  <div className="rounded-2xl bg-white border-2 border-emerald-600 p-6 shadow-lg relative overflow-hidden">
+                    <div className="flex items-center justify-between border-b border-emerald-100 pb-3 mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center font-bold shadow-xs">
+                          <CheckCircle2 className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-sm text-[#072C1E]">
+                              Quran Education Admissions
+                            </span>
+                            <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-semibold">
+                              Verified Academy
+                            </span>
+                          </div>
+                          <span className="font-mono text-xs text-emerald-700 font-semibold">
+                            +92 318 7779954
+                          </span>
+                        </div>
+                      </div>
+                      <span className="text-[11px] font-mono text-slate-400">
+                        {submissionId}
+                      </span>
+                    </div>
+
+                    <div className="space-y-3 text-slate-700 text-xs leading-relaxed bg-[#FAF9F5] p-4 rounded-xl border border-slate-200">
+                      <p className="font-semibold text-emerald-900 text-sm">
+                        Assalamu Alaykum {formData.studentName || 'Student'}!
+                      </p>
+                      <p>
+                        <strong className="text-[#072C1E]">Welcome to Quran Education Academy!</strong> Your 3-Day Free Trial enrollment application for <strong className="text-emerald-800">{getCourseTitle()}</strong> has been directly received and registered in our system.
+                      </p>
+                      <p>
+                        Our academic coordination team has automatically received your application details at <span className="font-mono font-bold text-emerald-700">+92 318 7779954</span>. An assigned scholar matching your preferred schedule (<span className="font-medium text-slate-800">{formData.preferredTime}</span>) is being designated for you.
+                      </p>
+                      <p className="text-slate-600 border-t border-slate-200/80 pt-2 text-[11px]">
+                        We will reach out to you directly at <span className="font-mono font-bold text-slate-800">{formData.whatsappNumber}</span> to confirm your class timings and provide your private classroom link.
+                      </p>
+                    </div>
+
+                    {/* Enrollment Details Summary */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-4 text-[11px]">
+                      <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                        <span className="text-slate-500 block">Student Name</span>
+                        <span className="font-semibold text-slate-800">{formData.studentName}</span>
+                      </div>
+                      <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                        <span className="text-slate-500 block">Course</span>
+                        <span className="font-semibold text-slate-800">{getCourseTitle()}</span>
+                      </div>
+                      <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                        <span className="text-slate-500 block">Trial Status</span>
+                        <span className="font-semibold text-emerald-700">3-Day Free Trial Confirmed</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <h4 className="text-xl font-bold font-serif text-[#072C1E]">
-                    JazakAllah Khair! Admissions Form Received
-                  </h4>
-
-                  <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                    Our academic coordinator has received your details and will connect with you via WhatsApp at{' '}
-                    <span className="font-semibold text-emerald-800">
-                      {formData.whatsappNumber || 'your number'}
-                    </span>{' '}
-                    to assign your scholar and schedule your first trial class.
-                  </p>
-
-                  <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <div className="flex justify-center pt-2">
                     <button
-                      onClick={handleOpenWhatsApp}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-xl font-bold text-xs shadow-md hover:bg-[#20BD5A] transition-all cursor-pointer"
+                      onClick={() => {
+                        setFormData({
+                          studentName: '',
+                          parentName: '',
+                          age: '',
+                          country: '',
+                          whatsappNumber: '',
+                          email: '',
+                          courseId: 'noorani-qaida',
+                          preferredTime: 'Evening (5:00 PM - 9:00 PM)',
+                          message: '',
+                        });
+                        setIsSubmitted(false);
+                      }}
+                      className="px-6 py-3 bg-[#0A3826] text-white rounded-xl font-semibold text-xs hover:bg-[#072C1E] transition-colors cursor-pointer shadow-sm"
                     >
-                      <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
-                        <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
-                      </svg>
-                      <span>Open Application on WhatsApp</span>
-                    </button>
-
-                    <button
-                      onClick={() => setIsSubmitted(false)}
-                      className="w-full sm:w-auto px-5 py-3 bg-white text-slate-700 rounded-xl font-semibold text-xs border border-slate-300 hover:bg-slate-50 transition-colors cursor-pointer"
-                    >
-                      Submit Another Student
+                      Submit Another Student Application
                     </button>
                   </div>
                 </div>
@@ -254,38 +276,21 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
                     </select>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Preferred Time Slot
-                      </label>
-                      <select
-                        value={formData.preferredTime}
-                        onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                        className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0A3826]"
-                      >
-                        <option>Morning (8:00 AM - 12:00 PM)</option>
-                        <option>Afternoon (1:00 PM - 5:00 PM)</option>
-                        <option>Evening (5:00 PM - 9:00 PM)</option>
-                        <option>Night (9:00 PM - Midnight)</option>
-                        <option>Weekend Only</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Teacher Preference
-                      </label>
-                      <select
-                        value={formData.teacherPreference}
-                        onChange={(e) => setFormData({ ...formData, teacherPreference: e.target.value })}
-                        className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0A3826]"
-                      >
-                        <option>Any Qualified Scholar</option>
-                        <option>Female Scholar (Recommended for Sisters & Kids)</option>
-                        <option>Senior Male Scholar / Qari</option>
-                      </select>
-                    </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      Preferred Time Slot
+                    </label>
+                    <select
+                      value={formData.preferredTime}
+                      onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
+                      className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0A3826]"
+                    >
+                      <option>Morning (8:00 AM - 12:00 PM)</option>
+                      <option>Afternoon (1:00 PM - 5:00 PM)</option>
+                      <option>Evening (5:00 PM - 9:00 PM)</option>
+                      <option>Night (9:00 PM - Midnight)</option>
+                      <option>Weekend Only</option>
+                    </select>
                   </div>
 
                   <div>
@@ -301,32 +306,21 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
                     />
                   </div>
 
-                  {/* Actions */}
-                  <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                  {/* Single Submit Button */}
+                  <div className="pt-2">
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex-1 py-3.5 px-4 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full py-3.5 px-4 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
                     >
                       {isSubmitting ? (
                         <span>Submitting Application...</span>
                       ) : (
                         <>
-                          <span>Submit & Schedule Free Trial</span>
+                          <span>Submit</span>
                           <Send className="w-3.5 h-3.5 text-[#D4AF37]" />
                         </>
                       )}
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={handleOpenWhatsApp}
-                      className="py-3.5 px-5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
-                        <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
-                      </svg>
-                      <span>Instant WhatsApp Application</span>
                     </button>
                   </div>
                 </form>

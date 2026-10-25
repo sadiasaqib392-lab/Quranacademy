@@ -173,13 +173,13 @@
     ]
   },
   {
-    "id": "translation",
-    "slug": "translation",
+    "id": "quran-translation",
+    "slug": "quran-translation",
     "title": "Quran Translation Course",
     "arabicTitle": "ترجمة القرآن الكريم",
     "category": "Understanding",
     "level": "Intermediate",
-    "suitableFor": "Seekers wanting to understand the meaning, historical context, and guidance",
+    "suitableFor": "Seekers wanting to understand the meaning, historical context, and divine message",
     "duration": "12 to 18 Months",
     "classesPerWeek": "2 to 3 classes / week (45 mins)",
     "shortDesc": "Understand the divine message word-by-word with grammatical parsing and clear contextual meaning in English or Urdu.",
@@ -213,51 +213,11 @@
     ]
   },
   {
-    "id": "islamic-studies",
-    "slug": "islamic-studies",
-    "title": "Comprehensive Islamic Studies",
-    "arabicTitle": "الدراسات الإسلامية",
-    "category": "Islamic Studies",
-    "level": "All Levels",
-    "suitableFor": "Children, teens, and new Muslims seeking well-rounded Islamic knowledge",
-    "duration": "9 to 12 Months",
-    "classesPerWeek": "2 to 3 classes / week (30-40 mins)",
-    "shortDesc": "Holistic curriculum covering Aqeedah, Seerah of the Prophet (PBUH), Fiqh of daily life, Hadith, and Islamic character.",
-    "fullOverview": "Nurture a confident, grounded Muslim identity. This course provides an authentic, age-appropriate foundation in faith. Students explore the Six Pillars of Iman, the Five Pillars of Islam, inspiring stories from the life of the Prophet Muhammad (PBUH) and his noble Companions, essential daily manners (Akhlaq), and contemporary challenges facing youth.",
-    "whatYouWillLearn": [
-      "Aqeedah: The 6 Articles of Faith and Tawheed (Oneness of Allah)",
-      "Seerah: The inspiring life and character of Prophet Muhammad (PBUH)",
-      "Hadith: 40 short foundational sayings of the Prophet with real-life practice",
-      "Fiqh: Purification (Taharah), Wudu, Salah, Sawm, and Halal/Haram guidance",
-      "Islamic character, respecting parents, honesty, and digital ethics"
-    ],
-    "learningOutcomes": [
-      "A grounded moral compass rooted in the Sunnah",
-      "Clear understanding of daily religious duties and rituals",
-      "Confidence to navigate school and professional life with strong Muslim pride"
-    ],
-    "courseBenefits": [
-      "Engaging story-based curriculum designed for Western diaspora students",
-      "Weekly interactive quizzes and practical challenges",
-      "Supportive mentorship that welcomes students’ heartfelt questions"
-    ],
-    "teachingMethodology": "Discussion-oriented, story-centered learning with practical habit-tracking exercises.",
-    "classFormat": "1-on-1 mentoring session with colorful illustrated workbooks.",
-    "image": "/assets/images/islamic_academy_learning_1790269898921.jpg",
-    "badge": "Youth & Adults",
-    "faqs": [
-      {
-        "question": "Is this course suitable for teens living in Western countries?",
-        "answer": "Yes! The curriculum is specially tailored for Muslim youth growing up in the UK, USA, Canada, and Europe, addressing real-life peer pressure and modern issues."
-      }
-    ]
-  },
-  {
     "id": "salah-and-duas",
     "slug": "salah-and-duas",
-    "title": "Salah & Daily Masnoon Duas",
+    "title": "Salah and Daily Masnoon Dua",
     "arabicTitle": "الصلاة والأدعية المأثورة",
-    "category": "Islamic Studies",
+    "category": "Islamic Practice",
     "level": "Beginner",
     "suitableFor": "Kids, beginners, and anyone wanting to perfect their prayer and daily supplications",
     "duration": "2 to 4 Months",
@@ -287,92 +247,128 @@
     "badge": "Essential Sunnah",
     "faqs": [
       {
-        "question": "Can my 6-year-old child take this alongside Noorani Qaida?",
+        "question": "Can my child take this alongside Noorani Qaida?",
         "answer": "Yes! Many parents combine 2 days of Qaida and 1 day of Salah & Duas for a well-rounded foundation."
       }
     ]
   },
   {
-    "id": "basic-arabic",
-    "slug": "basic-arabic",
-    "title": "Basic Arabic",
-    "arabicTitle": "اللغة العربية للمبتدئين",
-    "category": "Language",
+    "id": "basic-islamic-studies",
+    "slug": "basic-islamic-studies",
+    "title": "Basic Islamic Studies",
+    "arabicTitle": "الدراسات الإسلامية الأساسية",
+    "category": "Islamic Studies",
     "level": "Beginner",
-    "suitableFor": "Beginners, kids, and adults who want to learn foundational Arabic speaking, reading, and writing",
+    "suitableFor": "Children, youth, and new learners seeking a foundational understanding of Islam",
     "duration": "4 to 6 Months",
-    "classesPerWeek": "2 to 3 classes / week (45 mins)",
-    "shortDesc": "Foundational Arabic language skills covering basic conversation, everyday vocabulary, alphabet phonetics, and essential grammar.",
-    "fullOverview": "Learn essential conversational and written Arabic from certified native scholars. Build everyday vocabulary, greetings, basic sentence construction, and fundamental grammar rules (Nahw & Sarf essentials) in interactive 1-on-1 sessions.",
+    "classesPerWeek": "2 to 3 classes / week (30-40 mins)",
+    "shortDesc": "Essential foundation in Islamic beliefs (Aqeedah), 5 Pillars of Islam, basic etiquettes, and fundamental supplications.",
+    "fullOverview": "Basic Islamic Studies introduces young learners and beginners to the foundational principles of Islam in an engaging and accessible format. Students explore the Six Articles of Faith (Iman), the Five Pillars of Islam, inspiring stories of the Prophets, basic Halal and Haram guidelines, and everyday Islamic manners (Akhlaq).",
     "whatYouWillLearn": [
-      "Fundamental Arabic grammar rules (Nahw & Sarf essentials)",
-      "Everyday conversational vocabulary and phrases",
-      "Proper Arabic sentence structuring and syntax",
-      "Listening and speaking exercises with native tutors",
-      "Reading simple Arabic texts, dialogues, and short stories"
+      "The Six Articles of Faith (Iman) and Tawheed (Oneness of Allah)",
+      "The Five Pillars of Islam (Shahadah, Salah, Zakat, Sawm, Hajj)",
+      "Inspiring stories of Prophet Adam, Nuh, Ibrahim, Musa, Isa, and Muhammad (PBUT)",
+      "Essential Islamic etiquettes: greeting with Salam, truthfulness, respecting parents",
+      "Cleanliness (Taharah), basic Wudu rules, and daily Halal living"
     ],
     "learningOutcomes": [
-      "Ability to communicate in basic Arabic conversation with confidence",
-      "Command over fundamental Arabic grammar terms and structures",
-      "Reading comprehension of simple Arabic texts without hesitation"
+      "Strong awareness of personal Muslim identity and basic religious obligations",
+      "Familiarity with early Islamic history and prophetic virtues",
+      "Practical implementation of Islamic adab in daily family and school life"
     ],
     "courseBenefits": [
-      "Interactive flashcard decks and digital vocabulary drills",
-      "Accelerated learning method designed specifically for non-native speakers",
-      "Dedicated 1-on-1 attention with native certified Arabic instructors"
+      "Child-friendly illustrated stories and interactive activity sheets",
+      "Weekly moral lessons reinforcing good character and kindness",
+      "Taught by patient, caring scholars who build trust with students"
     ],
-    "teachingMethodology": "Pattern recognition, high-frequency word immersion, and live sentence breakdown.",
-    "classFormat": "1-on-1 focused study session with custom interactive worksheets.",
+    "teachingMethodology": "Interactive storytelling, visual concept maps, and practical lifestyle habits.",
+    "classFormat": "1-on-1 private class with custom digital student workbooks.",
     "image": "/assets/images/islamic_academy_learning_1790269898921.jpg",
-    "badge": "Language Track",
+    "badge": "Essential Foundation",
     "faqs": [
       {
-        "question": "Is this spoken dialect Arabic or Classical Arabic?",
-        "answer": "This is Modern Standard & Classical Fusha Arabic, providing the perfect base for both spoken understanding and reading religious texts."
-      },
-      {
-        "question": "Do I need prior knowledge of Arabic to join?",
-        "answer": "No prior knowledge is required! We start right from alphabet recognition, basic vowels, and introductory greetings."
+        "question": "Is this course appropriate for young kids?",
+        "answer": "Yes, it is specially tailored for children ages 6 to 14, using simple, engaging language and fun educational methods."
       }
     ]
   },
   {
-    "id": "quranic-arabic",
-    "slug": "quranic-arabic",
-    "title": "Quranic Arabic",
-    "arabicTitle": "العربية القرآنية",
-    "category": "Language",
+    "id": "comprehensive-islamic-studies",
+    "slug": "comprehensive-islamic-studies",
+    "title": "Comprehensive Islamic Studies",
+    "arabicTitle": "الدراسات الإسلامية الشاملة",
+    "category": "Islamic Studies",
     "level": "Intermediate",
-    "suitableFor": "Students who want to unlock direct comprehension of the Quranic vocabulary",
-    "duration": "6 to 12 Months",
-    "classesPerWeek": "2 to 3 classes / week (45 mins)",
-    "shortDesc": "Master high-frequency Quranic vocabulary and fundamental grammar to understand over 80% of words in the Holy Quran.",
-    "fullOverview": "Ever wished to understand the Quran directly during recitation without relying on translation? This course focuses on high-frequency Quranic vocabulary and fundamental Arabic grammar rules, enabling you to comprehend over 80% of words found across the Quran.",
+    "suitableFor": "Teens, adults, and families seeking an in-depth understanding of Seerah, Hadith, and Fiqh",
+    "duration": "9 to 12 Months",
+    "classesPerWeek": "2 to 3 classes / week (40-45 mins)",
+    "shortDesc": "Holistic curriculum covering Seerah of the Prophet (PBUH), 40 Hadith, Fiqh of daily life, and Islamic character.",
+    "fullOverview": "Comprehensive Islamic Studies provides an authentic, well-rounded education in the core branches of Islamic knowledge. Students delve into the chronological Seerah of Prophet Muhammad (PBUH), examine 40 foundational Hadiths with real-life application, master the Fiqh of worship and social transactions, and discuss contemporary ethical questions faced by Muslims today.",
     "whatYouWillLearn": [
-      "The 300 most frequent words in the Quran making up ~70% of the entire text",
-      "Essential Arabic grammar: Nouns (Ism), Verbs (Fi’l), and Particles (Harf)",
-      "Basic verb conjugations: Past (Madi), Present/Future (Mudari’), Command (Amr)",
-      "Pronouns, prepositions, sentence structures, and possession (Idafah)",
-      "Practical parsing of Surah Al-Fatihah, Ayatul Kursi, and Juz 30"
+      "In-depth Seerah: Makkan and Madinan eras, trials, treaties, and prophetic leadership",
+      "Imam An-Nawawi’s 40 Hadith: text, context, and spiritual lessons",
+      "Fiqh of Worship: Taharah, Salah, Funeral (Janazah), Fasting, and Zakat calculation",
+      "Islamic worldview: countering modern doubts, family values, and digital ethics",
+      "The lives and legacy of the Four Rightly Guided Caliphs (Khulafa-e-Rashideen)"
     ],
     "learningOutcomes": [
-      "Direct comprehension of Quranic verses during Taraweeh and Salah",
-      "Ability to decipher root letters and meanings using Arabic dictionaries",
-      "A powerful stepping stone to advanced classical Arabic studies"
+      "Well-grounded moral and theological framework rooted in the Quran and Sunnah",
+      "Clear understanding of practical Fiqh issues encountered in modern society",
+      "Confidence to articulate Islamic beliefs and live faith with Ihsan"
     ],
     "courseBenefits": [
-      "Interactive flashcard decks and digital vocabulary drills",
-      "Accelerated learning method designed specifically for non-native speakers",
-      "Real Quranic passage exercises rather than abstract grammatical theories"
+      "Engaging discussions tailored for Muslim youth and adults living globally",
+      "Weekly interactive quizzes, reflection journals, and open Q&A sessions",
+      "Structured slide decks and reference notes provided for lifetime study"
     ],
-    "teachingMethodology": "Pattern recognition, high-frequency word immersion, and live sentence breakdown.",
-    "classFormat": "1-on-1 focused study session with custom interactive worksheets.",
-    "image": "/assets/images/islamic_academy_learning_1790269898921.jpg",
-    "badge": "High Impact",
+    "teachingMethodology": "Analytical discussion, thematic exploration, and practical case studies.",
+    "classFormat": "1-on-1 personalized seminar with interactive lecture materials.",
+    "image": "/assets/images/student_quran_online_1792049844560.jpg",
+    "badge": "Holistic Learning",
     "faqs": [
       {
-        "question": "Is this spoken dialect Arabic or Classical Quranic Arabic?",
-        "answer": "This is Classical Fusha / Quranic Arabic, focused directly on understanding the Quran and Islamic texts."
+        "question": "Is this course suitable for teens living in Western countries?",
+        "answer": "Yes! The curriculum specifically addresses peer pressure, identity, and practical scenarios faced by Muslim youth in the UK, USA, Canada, and Europe."
+      }
+    ]
+  },
+  {
+    "id": "advanced-islamic-studies",
+    "slug": "advanced-islamic-studies",
+    "title": "Advanced Islamic Studies",
+    "arabicTitle": "الدراسات الإسلامية المتقدمة",
+    "category": "Islamic Studies",
+    "level": "Advanced",
+    "suitableFor": "Advanced students, seekers of sacred knowledge, and community mentors",
+    "duration": "12 to 18 Months",
+    "classesPerWeek": "2 to 3 classes / week (45 mins)",
+    "shortDesc": "In-depth study of Usul al-Fiqh, classical Tafseer principles, Hadith sciences, and contemporary jurisprudence.",
+    "fullOverview": "Designed for serious students seeking higher-level Islamic scholarship, the Advanced Islamic Studies course explores classical methodologies of Islamic jurisprudence (Usul al-Fiqh), Quranic exegesis (Usul al-Tafseer), Hadith classification and critique (Mustalah al-Hadith), comparative Islamic law, and modern ethical dilemmas in bioethics and finance.",
+    "whatYouWillLearn": [
+      "Principles of Islamic Jurisprudence (Usul al-Fiqh): primary and secondary sources of law",
+      "Principles of Quranic Exegesis (Usul al-Tafseer): hermeneutics and classical schools of Tafseer",
+      "Hadith Sciences (Mustalah al-Hadith): Isnad authentication, grading, and compilation history",
+      "Contemporary Islamic Jurisprudence: modern financial contracts, medical ethics, and halal standards",
+      "Islamic history and civilization: major intellectual movements and classical scholastic traditions"
+    ],
+    "learningOutcomes": [
+      "Deep understanding of how classical Islamic legal rulings are derived from sacred texts",
+      "Ability to critically analyze classical commentaries and scholarly literature",
+      "Intellectual maturity to address modern philosophical and social questions with scholastic rigor"
+    ],
+    "courseBenefits": [
+      "Taught exclusively by senior Alim / Alimah graduates of classical Islamic seminaries",
+      "Original classical Arabic text extracts accompanied by analytical English/Urdu translations",
+      "Mentorship and research paper opportunities for advanced students"
+    ],
+    "teachingMethodology": "Textual analysis of classical treatises, scholarly debates, and legal case studies.",
+    "classFormat": "1-on-1 advanced tutorial session with specialized academic texts.",
+    "image": "/assets/images/quran_hifz_study_1792049866584.jpg",
+    "badge": "Scholarly Track",
+    "faqs": [
+      {
+        "question": "Are there prerequisites for this course?",
+        "answer": "A solid foundation in basic Islamic principles and an intermediate level of reading comprehension is recommended."
       }
     ]
   }

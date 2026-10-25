@@ -66,7 +66,10 @@ export const Navbar: React.FC<NavbarProps> = ({
     { name: 'Quran with Tajweed', slug: 'quran-tajweed' },
     { name: 'Quran Memorization (Hifz)', slug: 'quran-memorization' },
     { name: 'Quran Translation', slug: 'quran-translation' },
-    { name: 'Basic Arabic Language', slug: 'basic-arabic' },
+    { name: 'Salah and Daily Masnoon Dua', slug: 'salah-and-duas' },
+    { name: 'Basic Islamic Studies', slug: 'basic-islamic-studies' },
+    { name: 'Comprehensive Islamic Studies', slug: 'comprehensive-islamic-studies' },
+    { name: 'Advanced Islamic Studies', slug: 'advanced-islamic-studies' },
   ];
 
   const handleNavClick = (page: PageRoute, isAction?: boolean) => {

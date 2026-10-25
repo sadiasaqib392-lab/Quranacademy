@@ -391,10 +391,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                 Comprehensive Curriculum
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#072C1E] mt-1">
-                Our Quran & Arabic Courses
+                Our Quran & Islamic Studies Courses
               </h2>
               <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-xl">
-                Structured programs including Basic Arabic, Quranic Arabic, and Translation taught 1-on-1 by certified scholars.
+                Structured programs including Tajweed, Memorization, Translation, and Islamic Studies taught 1-on-1 by certified scholars.
               </p>
             </div>
 

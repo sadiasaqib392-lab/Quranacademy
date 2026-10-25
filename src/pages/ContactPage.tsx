@@ -164,7 +164,7 @@ export const ContactPage: React.FC = () => {
                     <div>
                       <span className="text-[11px] text-emerald-300/80 block">Facebook Messenger</span>
                       <span className="text-xs font-semibold text-white">
-                        m.me/quraneducationacademy
+                        m.me/quraaneducationacademy
                       </span>
                     </div>
                   </a>

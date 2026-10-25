@@ -16,8 +16,8 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onNavigate, onOpenEnro
     'All',
     'Foundation',
     'Recitation',
+    'Tajweed',
     'Memorization',
-    'Language',
     'Understanding',
     'Islamic Studies',
   ];
@@ -40,11 +40,11 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onNavigate, onOpenEnro
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-[#072C1E]">
-            Our Quran & Arabic Courses
+            Our Quran & Islamic Studies Courses
           </h1>
 
           <p className="text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Discover accredited personalized 1-on-1 programs in Basic Arabic, Quranic Arabic, and Translation taught by certified scholars.
+            Discover accredited personalized 1-on-1 programs in Quran, Tajweed, Translation, and Islamic Studies taught by certified scholars.
           </p>
 
           {/* Filter Categories */}

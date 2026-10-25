@@ -28,10 +28,11 @@ export const ACADEMY_CONFIG = {
   address: 'Global Online Academy & Regional Centers (UK, USA, Canada, Australia, UAE, Pakistan)',
   workingHours: '24 Hours / 7 Days a Week (Worldwide Timezones Supported)',
   socialLinks: {
-    facebook: 'https://facebook.com/quraneducationacademy',
-    messenger: 'https://m.me/quraneducationacademy',
-    instagram: 'https://instagram.com/quraneducationacademy',
-    youtube: 'https://youtube.com/@quraneducationacademy',
-    twitter: 'https://x.com/quraneducation',
+    facebook: 'https://www.facebook.com/quraaneducationacademy?mibextid=ZbWKwL',
+    messenger: 'https://m.me/quraaneducationacademy',
+    instagram: 'https://www.instagram.com/invites/contact/?i=176ks3hhm473l&utm_content=mengune',
+    youtube: 'https://www.youtube.com/@quraan_education',
+    twitter: 'https://twitter.com/QuranAcadmi?t=sX209JpBDAqc4_R8IPPd-w&s=08',
+    tiktok: 'https://www.tiktok.com/@quran.education08?_t=8n1wB3K3UD5&_r=1',
   },
 };

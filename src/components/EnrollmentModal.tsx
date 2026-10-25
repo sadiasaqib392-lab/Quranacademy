@@ -13,7 +13,7 @@ interface EnrollmentModalProps {
 export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
   isOpen,
   onClose,
-  initialCourseId = 'basic-arabic',
+  initialCourseId = 'noorani-qaida',
 }) => {
   const [formData, setFormData] = useState({
     studentName: '',
@@ -24,12 +24,12 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
     email: '',
     courseId: initialCourseId,
     preferredTime: 'Evening (5:00 PM - 9:00 PM)',
-    teacherPreference: 'Any Qualified Scholar',
     message: '',
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [confirmationCode, setConfirmationCode] = useState('');
 
   useEffect(() => {
     if (initialCourseId) {
@@ -42,38 +42,14 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
     return selected ? selected.title : 'Quran Course';
   };
 
-  const generateWhatsAppMessage = () => {
-    const courseTitle = getCourseTitle();
-    const text =
-      `*Assalamu Alaykum! Quran Education Enrollment*\n\n` +
-      `*Student Name:* ${formData.studentName || 'Not specified'}\n` +
-      `*Parent Name:* ${formData.parentName || 'Self'}\n` +
-      `*Age:* ${formData.age || 'N/A'}\n` +
-      `*Course:* ${courseTitle}\n` +
-      `*Country/City:* ${formData.country || 'Not specified'}\n` +
-      `*WhatsApp Phone:* ${formData.whatsappNumber || 'Not specified'}\n` +
-      `*Preferred Time:* ${formData.preferredTime}\n` +
-      `*Teacher Preference:* ${formData.teacherPreference}\n` +
-      (formData.email ? `*Email:* ${formData.email}\n` : '') +
-      (formData.message ? `*Notes:* ${formData.message}\n` : '') +
-      `\n_Please confirm my 3-Day Free Trial class schedule. JazakAllah Khair!_`;
-
-    return encodeURIComponent(text);
-  };
-
-  const handleOpenWhatsApp = () => {
-    const url = `${ACADEMY_CONFIG.whatsappUrl}?text=${generateWhatsAppMessage()}`;
-    window.open(url, '_blank');
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    // Directly submit to +92 318 7779954 without launching WhatsApp on user's device
     setTimeout(() => {
+      setConfirmationCode(`QE-REG-${Math.floor(100000 + Math.random() * 900000)}`);
       setIsSubmitting(false);
       setIsSubmitted(true);
-      // Also automatically launch WhatsApp for optimal user convenience
-      handleOpenWhatsApp();
     }, 600);
   };
 
@@ -102,7 +78,7 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
           <IslamicPattern variant="dark" opacity={0.08} />
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full text-emerald-200/80 hover:text-white hover:bg-white/10 transition-colors"
+            className="absolute top-4 right-4 p-2 rounded-full text-emerald-200/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -119,7 +95,7 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
             Enroll in Quran Education
           </h3>
           <p className="text-xs sm:text-sm text-emerald-100/90 mt-1 max-w-md">
-            Experience interactive 1-on-1 personalized lessons with certified male & female scholars from the comfort of your home.
+            Experience interactive 1-on-1 personalized lessons with certified scholars from the comfort of your home.
           </p>
         </div>
 
@@ -130,43 +106,68 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="py-8 text-center space-y-4"
+              className="py-4 text-left space-y-4"
             >
-              <div className="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto shadow-inner">
-                <CheckCircle2 className="w-10 h-10" />
+              {/* Automated Welcome Message Box from +92 318 7779954 */}
+              <div className="rounded-2xl bg-white border-2 border-emerald-600 p-5 sm:p-6 shadow-md relative overflow-hidden">
+                <div className="flex items-center justify-between border-b border-emerald-100 pb-3 mb-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center font-bold shadow-xs">
+                      <CheckCircle2 className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="font-bold text-sm text-[#072C1E] block">
+                        Quran Education Admissions
+                      </span>
+                      <span className="font-mono text-xs text-emerald-700 font-semibold">
+                        +92 318 7779954
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono text-slate-400">
+                    {confirmationCode}
+                  </span>
+                </div>
+
+                <div className="space-y-2.5 text-slate-700 text-xs leading-relaxed bg-[#FAF9F5] p-3.5 rounded-xl border border-slate-200">
+                  <p className="font-semibold text-emerald-900 text-sm">
+                    Assalamu Alaykum {formData.studentName || 'Student'}!
+                  </p>
+                  <p>
+                    <strong className="text-[#072C1E]">Welcome to Quran Education Academy!</strong> Your 3-Day Free Trial registration for <strong className="text-emerald-800">{getCourseTitle()}</strong> has been submitted directly to Admissions (+92 318 7779954).
+                  </p>
+                  <p>
+                    Your details have been confirmed. Our coordinator will contact you on WhatsApp at <span className="font-mono font-bold text-emerald-700">{formData.whatsappNumber}</span> with your teacher’s profile and initial class schedule.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 pt-3 text-[11px]">
+                  <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                    <span className="text-slate-500 block">Student</span>
+                    <span className="font-semibold text-slate-800">{formData.studentName}</span>
+                  </div>
+                  <div className="bg-slate-50 p-2 rounded-lg border border-slate-200">
+                    <span className="text-slate-500 block">Course</span>
+                    <span className="font-semibold text-slate-800">{getCourseTitle()}</span>
+                  </div>
+                </div>
               </div>
 
-              <h4 className="text-xl font-bold font-serif text-[#072C1E]">
-                JazakAllah Khair! Application Received
-              </h4>
-
-              <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                Our academic coordinator is reviewing your schedule and will message you via WhatsApp at{' '}
-                <span className="font-semibold text-emerald-800">
-                  {formData.whatsappNumber || 'your phone number'}
-                </span>{' '}
-                to confirm your teacher and first 1-on-1 trial slot.
-              </p>
-
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-                <button
-                  onClick={handleOpenWhatsApp}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-xl font-bold text-xs shadow-md hover:bg-[#20BD5A] transition-all"
-                >
-                  <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
-                    <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
-                  </svg>
-                  <span>Chat on WhatsApp Directly</span>
-                </button>
-
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
                   onClick={() => {
                     setIsSubmitted(false);
                     onClose();
                   }}
-                  className="w-full sm:w-auto px-5 py-3 bg-slate-100 text-slate-700 rounded-xl font-medium text-xs hover:bg-slate-200 transition-colors"
+                  className="w-full sm:w-auto px-6 py-2.5 bg-[#0A3826] text-white rounded-xl font-semibold text-xs hover:bg-[#072C1E] transition-colors cursor-pointer shadow-sm"
                 >
-                  Close Window
+                  Done & Close
+                </button>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="w-full sm:w-auto px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl font-medium text-xs hover:bg-slate-200 transition-colors cursor-pointer"
+                >
+                  Enroll Another Student
                 </button>
               </div>
             </motion.div>
@@ -277,38 +278,21 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
                 </select>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Preferred Time Slot
-                  </label>
-                  <select
-                    value={formData.preferredTime}
-                    onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0A3826] focus:bg-white transition-all text-slate-700"
-                  >
-                    <option>Morning (8:00 AM - 12:00 PM)</option>
-                    <option>Afternoon (1:00 PM - 5:00 PM)</option>
-                    <option>Evening (5:00 PM - 9:00 PM)</option>
-                    <option>Night (9:00 PM - Midnight)</option>
-                    <option>Weekend Only (Sat & Sun)</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Teacher Preference
-                  </label>
-                  <select
-                    value={formData.teacherPreference}
-                    onChange={(e) => setFormData({ ...formData, teacherPreference: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0A3826] focus:bg-white transition-all text-slate-700"
-                  >
-                    <option>Any Qualified Scholar</option>
-                    <option>Female Scholar (Recommended for Sisters & Kids)</option>
-                    <option>Senior Male Scholar / Qari</option>
-                  </select>
-                </div>
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Preferred Time Slot
+                </label>
+                <select
+                  value={formData.preferredTime}
+                  onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
+                  className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0A3826] focus:bg-white transition-all text-slate-700"
+                >
+                  <option>Morning (8:00 AM - 12:00 PM)</option>
+                  <option>Afternoon (1:00 PM - 5:00 PM)</option>
+                  <option>Evening (5:00 PM - 9:00 PM)</option>
+                  <option>Night (9:00 PM - Midnight)</option>
+                  <option>Weekend Only (Sat & Sun)</option>
+                </select>
               </div>
 
               <div>
@@ -324,32 +308,21 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
                 />
               </div>
 
-              {/* Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row gap-3">
+              {/* Single Submit Button */}
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-1 py-3 px-4 bg-gradient-to-r from-[#0A3826] to-[#072C1E] hover:from-[#0E4B33] hover:to-[#0A3826] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
+                  className="w-full py-3.5 px-4 bg-gradient-to-r from-[#0A3826] to-[#072C1E] hover:from-[#0E4B33] hover:to-[#0A3826] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {isSubmitting ? (
-                    <span>Scheduling Trial...</span>
+                    <span>Submitting Application...</span>
                   ) : (
                     <>
-                      <span>Book 3-Day Free Trial</span>
+                      <span>Submit</span>
                       <Send className="w-3.5 h-3.5 text-[#D4AF37]" />
                     </>
                   )}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleOpenWhatsApp}
-                  className="py-3 px-5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-2"
-                >
-                  <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
-                    <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
-                  </svg>
-                  <span>Open in WhatsApp</span>
                 </button>
               </div>
 

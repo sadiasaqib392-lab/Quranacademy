@@ -23,9 +23,9 @@ import { LegalPage } from './pages/LegalPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageRoute>('home');
-  const [courseSlug, setCourseSlug] = useState('basic-arabic');
+  const [courseSlug, setCourseSlug] = useState('noorani-qaida');
   const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
-  const [enrollCourseId, setEnrollCourseId] = useState('basic-arabic');
+  const [enrollCourseId, setEnrollCourseId] = useState('noorani-qaida');
 
   // Multi-page hash routing
   useEffect(() => {
@@ -105,9 +105,10 @@ export default function App() {
         'quran-tajweed': 'Quran with Tajweed Course | Quran Education',
         'quran-memorization': 'Quran Memorization (Hifz) | Quran Education',
         'quran-translation': 'Quran Translation Course | Quran Education',
-        'basic-arabic': 'Basic Arabic Language Course | Quran Education',
-        'islamic-studies': 'Islamic Studies & Duas | Quran Education',
-        'ten-qiraat': 'Ten Qira’at Course | Quran Education',
+        'salah-and-duas': 'Salah and Daily Masnoon Dua | Quran Education',
+        'basic-islamic-studies': 'Basic Islamic Studies Course | Quran Education',
+        'comprehensive-islamic-studies': 'Comprehensive Islamic Studies | Quran Education',
+        'advanced-islamic-studies': 'Advanced Islamic Studies Course | Quran Education',
       };
       document.title = courseTitles[courseSlug] || 'Course Details | Quran Education';
     } else {
