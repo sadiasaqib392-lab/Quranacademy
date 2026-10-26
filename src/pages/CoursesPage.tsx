@@ -35,7 +35,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onNavigate, onOpenEnro
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FBD415]" />
             <span>Structured Academic Programs</span>
           </div>
 
@@ -82,7 +82,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onNavigate, onOpenEnro
                     <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-100 text-[#0A3826]">
                       {course.category}
                     </span>
-                    <span className="text-xs font-bold text-[#C5A059] bg-[#C5A059]/10 px-2.5 py-0.5 rounded-md">
+                    <span className="text-xs font-bold text-[#FBD415] bg-[#FBD415]/15 px-2.5 py-0.5 rounded-md">
                       {course.level}
                     </span>
                   </div>

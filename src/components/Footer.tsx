@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { PageRoute } from '../types';
 import { Mail, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -157,7 +158,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
           {/* Bottom Islamic Architectural Arch Trim Line */}
           <path
             d="M0,422 L650,422 C670,422 682,430 695,430 C705,430 712,402 720,402 C728,402 735,430 745,430 C758,430 770,422 790,422 L1440,422"
-            stroke="#D4AF37"
+            stroke="#FBD415"
             strokeWidth="1.8"
             strokeLinecap="round"
           />
@@ -177,15 +178,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
               className="h-20 sm:h-24 md:h-28 w-auto object-contain drop-shadow-md mb-2"
             />
             <div className="flex items-baseline justify-center gap-2">
-              <span className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#F5BA14] font-medium leading-none drop-shadow-xs">
+              <span className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#FBD415] font-bold leading-none drop-shadow-xs">
                 Quran
               </span>
-              <span className="text-2xl sm:text-3xl md:text-4xl font-sans text-[#FFAA00] font-black leading-none drop-shadow-xs">
+              <span className="text-2xl sm:text-3xl md:text-4xl font-sans text-[#FBD415] font-black leading-none drop-shadow-xs">
                 Education
               </span>
             </div>
 
-            <span className="text-xs sm:text-sm md:text-[15px] text-[#F5BA14] font-medium lowercase tracking-wider mt-1.5 font-serif text-center">
+            <span className="text-xs sm:text-sm md:text-[15px] text-[#FBD415] font-semibold lowercase tracking-wider mt-1.5 font-serif text-center">
               online islamic academy
             </span>
           </div>
@@ -204,40 +205,46 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
             
             {/* FEEL FREE TO CONTACT US */}
             <div>
-              <h3 className="text-sm sm:text-[15px] font-bold text-[#FACC15] uppercase tracking-wider mb-3">
+              <h3 className="text-sm sm:text-[15px] font-bold text-[#FBD415] uppercase tracking-wider mb-3">
                 FEEL FREE TO CONTACT US
               </h3>
 
               <div className="space-y-2.5">
-                {/* Phone 1: WhatsApp */}
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white text-[#032918] flex items-center justify-center shrink-0 shadow-sm">
+                {/* Phone 1: WhatsApp +92 318 7779954 */}
+                <a
+                  href="https://wa.me/923187779954"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 group cursor-pointer"
+                  title="Chat with +92 318 7779954 on WhatsApp"
+                >
+                  <div className="w-8 h-8 rounded-full bg-white text-[#032918] group-hover:scale-105 flex items-center justify-center shrink-0 shadow-sm transition-transform">
                     <svg className="w-4 h-4 fill-[#25D366]" viewBox="0 0 24 24">
                       <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
                     </svg>
                   </div>
-                  <a
-                    href="tel:+923187779954"
-                    className="text-white hover:text-[#FACC15] transition-colors font-mono text-sm sm:text-[15px] font-medium"
-                  >
+                  <span className="text-white group-hover:text-[#FBD415] transition-colors font-mono text-sm sm:text-[15px] font-medium">
                     +92 318 7779954
-                  </a>
-                </div>
+                  </span>
+                </a>
 
-                {/* Phone 2: WhatsApp */}
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white text-[#032918] flex items-center justify-center shrink-0 shadow-sm">
+                {/* Phone 2: WhatsApp +92 309 6000449 */}
+                <a
+                  href="https://wa.me/923096000449"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 group cursor-pointer"
+                  title="Chat with +92 309 6000449 on WhatsApp"
+                >
+                  <div className="w-8 h-8 rounded-full bg-white text-[#032918] group-hover:scale-105 flex items-center justify-center shrink-0 shadow-sm transition-transform">
                     <svg className="w-4 h-4 fill-[#25D366]" viewBox="0 0 24 24">
                       <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
                     </svg>
                   </div>
-                  <a
-                    href="tel:+923096000449"
-                    className="text-white hover:text-[#FACC15] transition-colors font-mono text-sm sm:text-[15px] font-medium"
-                  >
+                  <span className="text-white group-hover:text-[#FBD415] transition-colors font-mono text-sm sm:text-[15px] font-medium">
                     +92 309 6000449
-                  </a>
-                </div>
+                  </span>
+                </a>
 
                 {/* Email */}
                 <div className="flex items-center gap-3">
@@ -246,7 +253,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
                   </div>
                   <a
                     href="mailto:info@quraneducation.uk"
-                    className="text-white hover:text-[#FACC15] transition-colors text-sm sm:text-[15px] font-medium break-all"
+                    className="text-white hover:text-[#FBD415] transition-colors text-sm sm:text-[15px] font-medium break-all"
                   >
                     info@quraneducation.uk
                   </a>
@@ -254,105 +261,77 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
               </div>
             </div>
 
-            {/* SOCIALIZE WITH US: Expanded social platforms */}
+            {/* SOCIALIZE WITH US: 5 Exact accounts (No Messenger, No WhatsApp here) */}
             <div className="pt-2">
-              <h3 className="text-sm sm:text-[15px] font-bold text-[#FACC15] uppercase tracking-wider mb-3">
+              <h3 className="text-sm sm:text-[15px] font-bold text-[#FBD415] uppercase tracking-wider mb-3">
                 SOCIALIZE WITH US
               </h3>
 
               <div className="flex flex-wrap items-center gap-2.5">
-                {/* WhatsApp */}
-                <a
-                  href="https://wa.me/923187779954"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="WhatsApp"
-                  title="WhatsApp"
-                  className="w-8 h-8 rounded-full bg-white text-[#25D366] hover:bg-[#25D366] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
-                  </svg>
-                </a>
-
-                {/* Instagram */}
-                <a
-                  href="https://www.instagram.com/invites/contact/?i=176ks3hhm473l&utm_content=mengune"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  title="Instagram"
-                  className="w-8 h-8 rounded-full bg-white text-[#E4405F] hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
-                </a>
-
-                {/* Facebook Messenger */}
-                <a
-                  href="https://m.me/quraaneducationacademy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Messenger"
-                  title="Messenger"
-                  className="w-8 h-8 rounded-full bg-white text-[#0084FF] hover:bg-[#0084FF] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.206V22l3.376-1.854c.91.252 1.88.388 2.889.388 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.042 12.443l-2.656-2.833-5.185 2.833 5.703-6.057 2.723 2.833 5.118-2.833-5.703 6.057z" />
-                  </svg>
-                </a>
-
-                {/* Facebook */}
-                <a
-                  href="https://www.facebook.com/quraaneducationacademy?mibextid=ZbWKwL"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  title="Facebook"
-                  className="w-8 h-8 rounded-full bg-white text-[#1877F2] hover:bg-[#1877F2] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-                  </svg>
-                </a>
-
-                {/* YouTube */}
+                {/* 1. YouTube */}
                 <a
                   href="https://www.youtube.com/@quraan_education"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
                   title="YouTube"
-                  className="w-8 h-8 rounded-full bg-white text-[#FF0000] hover:bg-[#FF0000] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
+                  className="w-8 h-8 rounded-full bg-white text-[#FF0000] hover:bg-[#FF0000] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
                 </a>
 
-                {/* Twitter / X */}
+                {/* 2. Twitter / X */}
                 <a
                   href="https://twitter.com/QuranAcadmi?t=sX209JpBDAqc4_R8IPPd-w&s=08"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Twitter / X"
                   title="Twitter / X"
-                  className="w-8 h-8 rounded-full bg-white text-slate-900 hover:bg-black hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
+                  className="w-8 h-8 rounded-full bg-white text-slate-900 hover:bg-black hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
 
-                {/* TikTok */}
+                {/* 3. Instagram */}
+                <a
+                  href="https://www.instagram.com/invites/contact/?i=176ks3hhm473l&utm_content=mengune"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  title="Instagram"
+                  className="w-8 h-8 rounded-full bg-white text-[#E4405F] hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
+                </a>
+
+                {/* 4. Facebook */}
+                <a
+                  href="https://www.facebook.com/quraaneducationacademy?mibextid=ZbWKwL"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  title="Facebook"
+                  className="w-8 h-8 rounded-full bg-white text-[#1877F2] hover:bg-[#1877F2] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                  </svg>
+                </a>
+
+                {/* 5. TikTok */}
                 <a
                   href="https://www.tiktok.com/@quran.education08?_t=8n1wB3K3UD5&_r=1"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TikTok"
                   title="TikTok"
-                  className="w-8 h-8 rounded-full bg-white text-slate-900 hover:bg-black hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
+                  className="w-8 h-8 rounded-full bg-white text-slate-900 hover:bg-black hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
@@ -364,12 +343,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
 
           {/* First Golden Vertical Divider Line */}
           <div className="hidden lg:flex lg:col-span-1 self-stretch justify-center">
-            <div className="w-[1.2px] bg-[#D4AF37] h-full min-h-[190px] mx-auto opacity-75" />
+            <div className="w-[1.5px] bg-[#FBD415] h-full min-h-[190px] mx-auto opacity-75" />
           </div>
 
           {/* Column 2: Quick Links */}
           <div className="md:col-span-3 lg:col-span-2 text-left">
-            <h3 className="text-sm sm:text-[15px] font-bold text-[#FACC15] uppercase tracking-wider mb-3">
+            <h3 className="text-sm sm:text-[15px] font-bold text-[#FBD415] uppercase tracking-wider mb-3">
               QUICK LINKS
             </h3>
 
@@ -380,11 +359,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
                   <li key={item.label}>
                     <a
                       href={`#/${targetHash}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-white/95 hover:text-[#FACC15] transition-colors text-sm sm:text-[15px] font-normal cursor-pointer text-left py-0.5"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNav(item.page);
+                      }}
+                      className="flex items-center gap-2 text-white/95 hover:text-[#FBD415] transition-colors text-sm sm:text-[15px] font-normal cursor-pointer text-left py-0.5"
                     >
-                      <span className="text-[#FFAA00] font-bold text-sm select-none">›</span>
+                      <span className="text-[#FBD415] font-bold text-sm select-none">›</span>
                       <span>{item.label}</span>
                     </a>
                   </li>
@@ -395,12 +376,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
 
           {/* Second Golden Vertical Divider Line */}
           <div className="hidden lg:flex lg:col-span-1 self-stretch justify-center">
-            <div className="w-[1.2px] bg-[#D4AF37] h-full min-h-[190px] mx-auto opacity-75" />
+            <div className="w-[1.5px] bg-[#FBD415] h-full min-h-[190px] mx-auto opacity-75" />
           </div>
 
           {/* Column 3: Students Gallery */}
           <div className="md:col-span-5 lg:col-span-5 text-left">
-            <h3 className="text-sm sm:text-[15px] font-bold text-[#FACC15] uppercase tracking-wider mb-3">
+            <h3 className="text-sm sm:text-[15px] font-bold text-[#FBD415] uppercase tracking-wider mb-3">
               STUDENTS GALLERY
             </h3>
 
@@ -428,28 +409,28 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
               {/* 12th Tile: Golden VIEW MORE */}
               <button
                 onClick={() => setSelectedStudent(students[0])}
-                className="rounded-xl aspect-square min-w-[50px] min-h-[50px] sm:min-w-[58px] sm:min-h-[58px] md:min-w-[64px] md:min-h-[64px] bg-gradient-to-b from-[#FFAA00] via-[#F59E0B] to-[#D97706] border border-[#FACC15]/60 shadow-sm flex flex-col items-center justify-center p-1 cursor-pointer hover:brightness-110 active:scale-95 transition-all text-center group"
+                className="rounded-xl aspect-square min-w-[50px] min-h-[50px] sm:min-w-[58px] sm:min-h-[58px] md:min-w-[64px] md:min-h-[64px] bg-[#FBD415] text-[#072C1E] border border-[#FBD415] shadow-sm flex flex-col items-center justify-center p-1 cursor-pointer hover:brightness-105 active:scale-95 transition-all text-center group"
                 title="View Student Gallery"
               >
                 {/* Top Islamic Filigree Flourish */}
                 <svg
-                  className="w-4 h-1.5 text-white/90 mb-0.5 group-hover:scale-110 transition-transform"
+                  className="w-4 h-1.5 text-[#072C1E] mb-0.5 group-hover:scale-110 transition-transform"
                   viewBox="0 0 24 8"
                   fill="currentColor"
                 >
                   <path d="M12 0 C14 3 18 4 24 4 C18 4 14 5 12 8 C10 5 6 4 0 4 C6 4 10 3 12 0 Z" />
                 </svg>
 
-                <span className="text-[10px] sm:text-[11px] font-black text-white tracking-widest leading-none drop-shadow-xs">
+                <span className="text-[10px] sm:text-[11px] font-black text-[#072C1E] tracking-widest leading-none drop-shadow-xs">
                   VIEW
                 </span>
-                <span className="text-[10px] sm:text-[11px] font-black text-white tracking-widest leading-none mt-0.5 drop-shadow-xs">
+                <span className="text-[10px] sm:text-[11px] font-black text-[#072C1E] tracking-widest leading-none mt-0.5 drop-shadow-xs">
                   MORE
                 </span>
 
                 {/* Bottom Islamic Filigree Flourish */}
                 <svg
-                  className="w-4 h-1.5 text-white/90 mt-0.5 group-hover:scale-110 transition-transform"
+                  className="w-4 h-1.5 text-[#072C1E] mt-0.5 group-hover:scale-110 transition-transform"
                   viewBox="0 0 24 8"
                   fill="currentColor"
                 >
@@ -470,18 +451,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
           <div className="flex items-center gap-3">
             <a
               href="#/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav('privacy');
+              }}
+              className="hover:text-[#FBD415] transition-colors cursor-pointer"
             >
               Privacy Policy
             </a>
             <span>·</span>
             <a
               href="#/terms"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav('terms');
+              }}
+              className="hover:text-[#FBD415] transition-colors cursor-pointer"
             >
               Terms of Service
             </a>
@@ -490,78 +475,80 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnroll }) => {
 
       </div>
 
-      {/* Interactive Lightbox Modal for Student Gallery & Enrollment */}
-      {selectedStudent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="relative bg-[#072C1E] border border-[#D4AF37]/50 rounded-2xl max-w-lg w-full p-6 text-white shadow-2xl overflow-hidden">
-            <button
-              onClick={() => setSelectedStudent(null)}
-              className="absolute top-4 right-4 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-              aria-label="Close preview"
-            >
-              <X className="w-5 h-5" />
-            </button>
+      {/* Interactive Lightbox Modal for Student Gallery & Enrollment Portaled to Body */}
+      {selectedStudent &&
+        createPortal(
+          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="relative bg-[#072C1E] border border-[#FBD415]/70 rounded-2xl max-w-lg w-full p-6 text-white shadow-2xl overflow-hidden">
+              <button
+                onClick={() => setSelectedStudent(null)}
+                className="absolute top-4 right-4 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                aria-label="Close preview"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-            <div className="flex flex-col items-center text-center">
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-2 border-[#D4AF37] shadow-lg mb-4">
-                <img
-                  src={selectedStudent.src}
-                  alt={selectedStudent.alt}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="flex items-center justify-between w-full px-6 mb-2">
-                <button
-                  onClick={handlePrevStudent}
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-                  aria-label="Previous student"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <div className="text-center">
-                  <h4 className="text-lg font-serif font-bold text-[#FACC15]">
-                    {selectedStudent.name}
-                  </h4>
-                  <p className="text-sm text-emerald-200/90 font-medium">
-                    {selectedStudent.course}
-                  </p>
+              <div className="flex flex-col items-center text-center">
+                <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-2 border-[#FBD415] shadow-lg mb-4">
+                  <img
+                    src={selectedStudent.src}
+                    alt={selectedStudent.alt}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <button
-                  onClick={handleNextStudent}
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-                  aria-label="Next student"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
 
-              <p className="text-xs sm:text-sm text-emerald-100/80 mb-5 max-w-sm">
-                Enrolled in interactive one-on-one live Quran classes with our certified scholars.
-              </p>
+                <div className="flex items-center justify-between w-full px-6 mb-2">
+                  <button
+                    onClick={handlePrevStudent}
+                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                    aria-label="Previous student"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div className="text-center">
+                    <h4 className="text-lg font-serif font-bold text-[#FBD415]">
+                      {selectedStudent.name}
+                    </h4>
+                    <p className="text-sm text-emerald-200/90 font-medium">
+                      {selectedStudent.course}
+                    </p>
+                  </div>
+                  <button
+                    onClick={handleNextStudent}
+                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                    aria-label="Next student"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
 
-              <div className="flex items-center gap-3 w-full sm:w-auto">
-                <button
-                  onClick={() => {
-                    setSelectedStudent(null);
-                    onOpenEnroll();
-                  }}
-                  className="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#B88204] hover:from-[#E2B338] hover:to-[#C59210] text-[#072C1E] font-bold text-sm transition-all shadow-md active:scale-95 cursor-pointer"
-                >
-                  Enroll Now
-                </button>
-                <button
-                  onClick={() => setSelectedStudent(null)}
-                  className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-sm transition-colors cursor-pointer"
-                >
-                  Close
-                </button>
+                <p className="text-xs sm:text-sm text-emerald-100/80 mb-5 max-w-sm">
+                  Enrolled in interactive one-on-one live Quran classes with our certified scholars.
+                </p>
+
+                <div className="flex items-center gap-3 w-full sm:w-auto">
+                  <button
+                    onClick={() => {
+                      setSelectedStudent(null);
+                      onOpenEnroll();
+                    }}
+                    className="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-[#FBD415] hover:bg-[#ebd523] text-[#072C1E] font-bold text-sm transition-all shadow-md active:scale-95 cursor-pointer"
+                  >
+                    Enroll Now
+                  </button>
+                  <button
+                    onClick={() => setSelectedStudent(null)}
+                    className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-sm transition-colors cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </footer>
   );
 };

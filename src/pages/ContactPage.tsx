@@ -37,23 +37,24 @@ export const ContactPage: React.FC = () => {
     return encodeURIComponent(text);
   };
 
-  // Direct trigger to WhatsApp
+  // Direct trigger to WhatsApp in same tab
   const handleOpenWhatsApp = () => {
     const url = `${ACADEMY_CONFIG.whatsappUrl}?text=${generateWhatsAppMessage()}`;
-    window.open(url, '_blank');
+    window.location.href = url;
   };
 
-  // On form submit, automatically prepare and dispatch data to WhatsApp
+  // On form submit, automatically prepare and dispatch data to WhatsApp directly
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const url = `${ACADEMY_CONFIG.whatsappUrl}?text=${generateWhatsAppMessage()}`;
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      // Automatically launch WhatsApp with the submitted details
-      handleOpenWhatsApp();
-    }, 500);
+      // Automatically launch WhatsApp with the submitted details in same tab
+      window.location.href = url;
+    }, 400);
   };
 
   return (
@@ -64,7 +65,7 @@ export const ContactPage: React.FC = () => {
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FBD415]" />
             <span>24/7 Global Academic Assistance</span>
           </div>
 
@@ -90,7 +91,7 @@ export const ContactPage: React.FC = () => {
                 <IslamicPattern variant="dark" opacity={0.08} />
 
                 <div>
-                  <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider">
+                  <span className="text-xs font-bold text-[#FBD415] uppercase tracking-wider">
                     Official Academy Contact
                   </span>
                   <h3 className="text-2xl font-serif font-bold text-white mt-1">
@@ -119,9 +120,7 @@ export const ContactPage: React.FC = () => {
                         href={`${ACADEMY_CONFIG.whatsappUrl}?text=${encodeURIComponent(
                           'As-salamu alaykum! I am reaching out from the Quran Education contact page.'
                         )}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#25D366] hover:bg-[#20BD5A] text-white text-[11px] font-bold shadow-xs transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#25D366] hover:bg-[#20BD5A] text-white text-[11px] font-bold shadow-xs transition-colors cursor-pointer"
                       >
                         <span>Click to Chat</span>
                         <ExternalLink className="w-3 h-3" />
@@ -132,9 +131,7 @@ export const ContactPage: React.FC = () => {
                   {/* 2. Instagram */}
                   <a
                     href={ACADEMY_CONFIG.socialLinks.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group"
+                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group cursor-pointer"
                   >
                     <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
                       <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
@@ -150,11 +147,10 @@ export const ContactPage: React.FC = () => {
                   </a>
 
                   {/* 3. Facebook Messenger */}
+                  {/* 3. Facebook Messenger */}
                   <a
                     href={ACADEMY_CONFIG.socialLinks.messenger}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group"
+                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group cursor-pointer"
                   >
                     <div className="w-11 h-11 rounded-2xl bg-[#0084FF] text-white flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
                       <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
@@ -172,9 +168,9 @@ export const ContactPage: React.FC = () => {
                   {/* 4. Email: info@quraneducation.uk */}
                   <a
                     href={`mailto:${ACADEMY_CONFIG.email}`}
-                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group"
+                    className="flex items-center gap-4 text-emerald-100/90 hover:text-white transition-colors group cursor-pointer"
                   >
-                    <div className="w-11 h-11 rounded-2xl bg-emerald-900/60 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-slate-900 transition-colors">
+                    <div className="w-11 h-11 rounded-2xl bg-emerald-900/60 flex items-center justify-center text-[#FBD415] group-hover:bg-[#FBD415] group-hover:text-slate-900 transition-colors">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
@@ -186,7 +182,7 @@ export const ContactPage: React.FC = () => {
                   </a>
 
                   <div className="flex items-center gap-4 text-emerald-100/90 pt-2 border-t border-emerald-800/60">
-                    <div className="w-11 h-11 rounded-2xl bg-emerald-900/60 flex items-center justify-center text-[#D4AF37]">
+                    <div className="w-11 h-11 rounded-2xl bg-emerald-900/60 flex items-center justify-center text-[#FBD415]">
                       <Clock className="w-5 h-5" />
                     </div>
                     <div>
@@ -202,7 +198,7 @@ export const ContactPage: React.FC = () => {
               {/* Office Locations */}
               <div className="bg-[#FAF8F5] p-6 rounded-3xl border border-slate-200 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-bold text-[#072C1E]">
-                  <MapPin className="w-4 h-4 text-[#C5A059]" />
+                  <MapPin className="w-4 h-4 text-[#FBD415]" />
                   <span>Serving Muslim Families Globally:</span>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
@@ -345,7 +341,7 @@ export const ContactPage: React.FC = () => {
                       ) : (
                         <>
                           <span>Submit & Send to WhatsApp</span>
-                          <Send className="w-3.5 h-3.5 text-[#D4AF37]" />
+                          <Send className="w-3.5 h-3.5 text-[#FBD415]" />
                         </>
                       )}
                     </button>
@@ -353,22 +349,17 @@ export const ContactPage: React.FC = () => {
                 </form>
               )}
 
-              {/* Requirement 11:
-                  - Add contact buttons below the contact form, similar to the existing contact form on the previous academy website.
-                  - Add the relevant Messenger links for each social media account.
-              */}
+              {/* Instant Communication Channels */}
               <div className="pt-6 border-t border-slate-200">
                 <span className="text-xs font-bold text-[#072C1E] uppercase tracking-wider block mb-3 text-center sm:text-left">
                   Instant Communication Channels:
                 </span>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
                   {/* 1. WhatsApp */}
                   <a
                     href={ACADEMY_CONFIG.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-white hover:bg-[#25D366] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group"
+                    className="p-3 bg-white hover:bg-[#25D366] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group cursor-pointer"
                   >
                     <svg className="w-5 h-5 fill-[#25D366] group-hover:fill-white transition-colors" viewBox="0 0 24 24">
                       <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
@@ -379,9 +370,7 @@ export const ContactPage: React.FC = () => {
                   {/* 2. Instagram */}
                   <a
                     href={ACADEMY_CONFIG.socialLinks.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-white hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group"
+                    className="p-3 bg-white hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group cursor-pointer"
                   >
                     <svg className="w-5 h-5 fill-[#E4405F] group-hover:fill-white transition-colors" viewBox="0 0 24 24">
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -389,26 +378,48 @@ export const ContactPage: React.FC = () => {
                     <span className="text-[11px] font-bold">Instagram</span>
                   </a>
 
-                  {/* 3. Facebook Messenger */}
+                  {/* 3. YouTube */}
                   <a
-                    href={ACADEMY_CONFIG.socialLinks.messenger}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-white hover:bg-[#0084FF] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group"
+                    href={ACADEMY_CONFIG.socialLinks.youtube}
+                    className="p-3 bg-white hover:bg-[#FF0000] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group cursor-pointer"
                   >
-                    <svg className="w-5 h-5 fill-[#0084FF] group-hover:fill-white transition-colors" viewBox="0 0 24 24">
-                      <path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.206V22l3.376-1.854c.91.252 1.88.388 2.889.388 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.042 12.443l-2.656-2.833-5.185 2.833 5.703-6.057 2.723 2.833 5.118-2.833-5.703 6.057z" />
+                    <svg className="w-5 h-5 fill-[#FF0000] group-hover:fill-white transition-colors" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                     </svg>
-                    <span className="text-[11px] font-bold">Messenger</span>
+                    <span className="text-[11px] font-bold">YouTube</span>
                   </a>
 
-                  {/* 4. Email */}
+                  {/* 4. Facebook */}
                   <a
-                    href={`mailto:${ACADEMY_CONFIG.email}`}
-                    className="p-3 bg-white hover:bg-[#072C1E] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group"
+                    href={ACADEMY_CONFIG.socialLinks.facebook}
+                    className="p-3 bg-white hover:bg-[#1877F2] hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group cursor-pointer"
                   >
-                    <Mail className="w-5 h-5 text-amber-600 group-hover:text-white transition-colors" />
-                    <span className="text-[11px] font-bold">Email Us</span>
+                    <svg className="w-5 h-5 fill-[#1877F2] group-hover:fill-white transition-colors" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                    <span className="text-[11px] font-bold">Facebook</span>
+                  </a>
+
+                  {/* 5. TikTok */}
+                  <a
+                    href={ACADEMY_CONFIG.socialLinks.tiktok}
+                    className="p-3 bg-white hover:bg-black hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group cursor-pointer"
+                  >
+                    <svg className="w-5 h-5 fill-slate-900 group-hover:fill-white transition-colors" viewBox="0 0 24 24">
+                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.97v7.54c-.01 2.2-.82 4.39-2.31 5.99-1.58 1.73-3.92 2.65-6.28 2.45-2.58-.2-4.9-1.74-6.07-4.04-1.25-2.43-.99-5.46.65-7.63 1.5-2.01 3.94-3.07 6.42-2.78v4.19c-1.12-.2-2.31.13-3.1.9-.84.8-1.13 2.03-.73 3.09.38 1.05 1.45 1.76 2.58 1.74 1.25-.01 2.36-.88 2.64-2.1.09-.43.12-.87.12-1.31V.02z" />
+                    </svg>
+                    <span className="text-[11px] font-bold">TikTok</span>
+                  </a>
+
+                  {/* 6. Twitter / X */}
+                  <a
+                    href={ACADEMY_CONFIG.socialLinks.twitter}
+                    className="p-3 bg-white hover:bg-black hover:text-white text-slate-700 rounded-xl border border-slate-200 transition-all flex flex-col items-center justify-center gap-1.5 shadow-2xs group cursor-pointer"
+                  >
+                    <svg className="w-5 h-5 fill-slate-900 group-hover:fill-white transition-colors" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                    <span className="text-[11px] font-bold">Twitter (X)</span>
                   </a>
                 </div>
               </div>

@@ -98,7 +98,7 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({
             {/* Quick Enroll Card */}
             <div className="lg:col-span-4 bg-white/95 backdrop-blur-sm p-6 rounded-3xl border border-slate-200 shadow-lg space-y-4">
               <div className="text-center pb-3 border-b border-slate-100">
-                <span className="text-xs font-bold text-[#C5A059] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#FBD415] uppercase tracking-wider">
                   Zero Financial Risk
                 </span>
                 <h4 className="text-xl font-serif font-bold text-[#072C1E] mt-0.5">
@@ -114,21 +114,21 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({
                 className="w-full py-3.5 bg-gradient-to-r from-[#0A3826] to-[#072C1E] hover:from-[#0E4B33] hover:to-[#0A3826] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Book Free Trial Class</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#FBD415]" />
               </button>
 
               <a
-                href={`${ACADEMY_CONFIG.whatsappUrl}?text=${encodeURIComponent(
+                href={`https://wa.me/923187779954?text=${encodeURIComponent(
                   `As-salamu alaykum! I would like to enroll in the ${course.title} at Quran Education Academy.`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold rounded-xl shadow-xs transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold rounded-xl shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                   <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
                 </svg>
-                <span>Ask on WhatsApp: {ACADEMY_CONFIG.phone}</span>
+                <span>Ask on WhatsApp: +92 318 7779954</span>
               </a>
 
               <div className="pt-2 text-[11px] text-slate-500 space-y-1">

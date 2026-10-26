@@ -131,7 +131,8 @@ export default function App() {
       page === 'course-detail' && slug
         ? `#/course/${slug}`
         : `#/${page === 'pricing' ? 'packages' : page === 'admissions' ? 'enroll' : page}`;
-    window.open(targetHash, '_blank');
+    window.location.hash = targetHash;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleOpenEnroll = (courseId?: string) => {

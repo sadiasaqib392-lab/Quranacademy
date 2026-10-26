@@ -39,7 +39,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate, onOpenEnroll }) =>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FBD415]" />
             <span>Clear Answers to Common Questions</span>
           </div>
 
@@ -142,7 +142,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate, onOpenEnroll }) =>
 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href={ACADEMY_CONFIG.whatsappUrl}
+                href="https://wa.me/923187779954"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
@@ -150,7 +150,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onNavigate, onOpenEnroll }) =>
                 <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                   <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
                 </svg>
-                <span>Chat on WhatsApp: {ACADEMY_CONFIG.phone}</span>
+                <span>Chat on WhatsApp: +92 318 7779954</span>
               </a>
 
               <button

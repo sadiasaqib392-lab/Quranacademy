@@ -38,15 +38,33 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
     return selected ? selected.title : 'Quran Course';
   };
 
+  const generateWhatsAppMessage = () => {
+    const text =
+      `*Assalamu Alaykum! New Enrollment Application - Quran Education*\n\n` +
+      `*Student Name:* ${formData.studentName}\n` +
+      (formData.parentName ? `*Parent/Guardian:* ${formData.parentName}\n` : '') +
+      `*Student Age:* ${formData.age}\n` +
+      `*Location/Country:* ${formData.country}\n` +
+      `*Student/Parent Contact Number:* ${formData.whatsappNumber}\n` +
+      (formData.email ? `*Email:* ${formData.email}\n` : '') +
+      `*Course Enrolled:* ${getCourseTitle()}\n` +
+      `*Preferred Timing:* ${formData.preferredTime}\n` +
+      (formData.message ? `*Notes:* ${formData.message}\n` : '') +
+      `\n_Sent from Quran Education Academy online enrollment form._`;
+    return encodeURIComponent(text);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate direct dispatch to +92 318 7779954 without opening WhatsApp on client
+    const waUrl = `https://wa.me/923187779954?text=${generateWhatsAppMessage()}`;
     setTimeout(() => {
       setSubmissionId(`QE-${Math.floor(100000 + Math.random() * 900000)}`);
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 700);
+      // Automatically send form data to WhatsApp in same tab
+      window.location.href = waUrl;
+    }, 400);
   };
 
   return (
@@ -57,7 +75,7 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FBD415]" />
             <span>Open Enrollment • Worldwide Admissions</span>
           </div>
 
@@ -84,7 +102,7 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
                 Online Enrollment Form
               </h3>
               <p className="relative z-10 text-xs text-slate-600 mb-6">
-                Fill in the details below and click Submit. Your application is sent directly to our admissions office (+92 318 7779954).
+                Fill in the details below and click Submit. Your application is sent directly to our admissions WhatsApp (+92 318 7779954).
               </p>
 
               {isSubmitted ? (
@@ -318,7 +336,7 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
                       ) : (
                         <>
                           <span>Submit</span>
-                          <Send className="w-3.5 h-3.5 text-[#D4AF37]" />
+                          <Send className="w-3.5 h-3.5 text-[#FBD415]" />
                         </>
                       )}
                     </button>
@@ -330,7 +348,7 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
             {/* Right Information Box */}
             <div className="lg:col-span-4 space-y-6">
               <div className="p-7 rounded-3xl bg-[#072C1E] text-white space-y-4">
-                <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#FBD415] uppercase tracking-wider">
                   Direct Counseling Line
                 </span>
                 <h4 className="text-xl font-serif font-bold text-white">
@@ -342,14 +360,12 @@ export const AdmissionsPage: React.FC<AdmissionsPageProps> = ({ onNavigate }) =>
 
                 <a
                   href={ACADEMY_CONFIG.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] text-white text-xs font-bold hover:bg-[#20BD5A] transition-colors w-full justify-center shadow-md"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] text-white text-xs font-bold hover:bg-[#20BD5A] transition-colors w-full justify-center shadow-md cursor-pointer"
                 >
                   <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                     <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
                   </svg>
-                  <span>Chat: {ACADEMY_CONFIG.phone}</span>
+                  <span>Chat: {ACADEMY_CONFIG.whatsapp}</span>
                 </a>
               </div>
 

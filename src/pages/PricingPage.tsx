@@ -30,7 +30,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenEnro
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FBD415]" />
             <span>Affordable & Transparent Tuition</span>
           </div>
 
@@ -83,12 +83,12 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenEnro
                   key={plan.id}
                   className={`relative rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 ${
                     isPopular
-                      ? 'bg-[#072C1E] text-white shadow-2xl scale-102 lg:-translate-y-2 border-2 border-[#D4AF37]'
+                      ? 'bg-[#072C1E] text-white shadow-2xl scale-102 lg:-translate-y-2 border-2 border-[#FBD415]'
                       : 'bg-white/92 backdrop-blur-sm text-slate-800 border border-slate-200/90 shadow-xs hover:shadow-lg'
                   }`}
                 >
                   {isPopular && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#C5A059] text-slate-900 font-extrabold text-[10px] tracking-widest uppercase shadow-md whitespace-nowrap">
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#FBD415] to-[#E5BE1D] text-slate-900 font-extrabold text-[10px] tracking-widest uppercase shadow-md whitespace-nowrap">
                       {plan.highlightText || 'Most Popular Choice'}
                     </div>
                   )}
@@ -130,7 +130,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenEnro
                       </div>
                       <span
                         className={`text-[11px] font-semibold mt-1 block ${
-                          isPopular ? 'text-[#D4AF37]' : 'text-emerald-800'
+                          isPopular ? 'text-[#FBD415]' : 'text-emerald-800'
                         }`}
                       >
                         {plan.classesPerWeek} Classes / Week ({plan.classesPerMonth} Classes Monthly)
@@ -140,7 +140,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenEnro
                     <div className="space-y-3 mb-8">
                       <h5
                         className={`text-[11px] font-bold uppercase tracking-wider ${
-                          isPopular ? 'text-[#D4AF37]' : 'text-[#072C1E]'
+                          isPopular ? 'text-[#FBD415]' : 'text-[#072C1E]'
                         }`}
                       >
                         What’s Included:
@@ -151,7 +151,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenEnro
                             <div
                               className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
                                 isPopular
-                                  ? 'bg-[#D4AF37] text-slate-900 font-bold'
+                                  ? 'bg-[#FBD415] text-slate-900 font-bold'
                                   : 'bg-emerald-100 text-[#0A3826]'
                               }`}
                             >
@@ -175,7 +175,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenEnro
                       onClick={() => onOpenEnroll(plan.id)}
                       className={`w-full py-3.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-md ${
                         isPopular
-                          ? 'bg-gradient-to-r from-[#D4AF37] to-[#C5A059] hover:from-[#E5BE48] hover:to-[#D4AF37] text-slate-900 font-extrabold'
+                          ? 'bg-gradient-to-r from-[#FBD415] to-[#E5BE1D] hover:from-[#FCE253] hover:to-[#FBD415] text-slate-900 font-extrabold'
                           : 'bg-[#0A3826] hover:bg-[#072C1E] text-white'
                       }`}
                     >

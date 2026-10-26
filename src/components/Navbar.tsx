@@ -84,9 +84,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300 shadow-sm bg-white">
-      {/* Top Green Bar: Only WhatsApp and Email contact pills on the right */}
+      {/* Top Green Bar: Contact pills on the right */}
       <div className="bg-[#072C1E] text-white py-1.5 px-4 sm:px-6 lg:px-8 border-b border-emerald-900/60 z-30">
-        <div className="max-w-7xl mx-auto flex items-center justify-end gap-2 sm:gap-3 text-xs">
+        <div className="max-w-6xl mx-auto flex items-center justify-end gap-2 sm:gap-3 text-xs">
           {/* WhatsApp 1 */}
           <a
             href="https://wa.me/923096000449"
@@ -121,50 +121,54 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-900/70 hover:bg-emerald-800 text-white font-medium text-[11px] sm:text-xs transition-all shadow-xs"
             title="Email: info@quraneducation.uk"
           >
-            <Mail className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+            <Mail className="w-3.5 h-3.5 text-[#FBD415] shrink-0" />
             <span className="font-sans">info@quraneducation.uk</span>
           </a>
         </div>
       </div>
 
-      {/* Main Header Bar: Pure White */}
+      {/* Main Header Bar: Pure White with Compact Max Width */}
       <div
         className={`w-full relative transition-all duration-300 bg-white ${
           isScrolled ? 'py-1 shadow-md' : 'py-1.5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           
-          {/* Left Side: Pure White Background with Yellow Logo + Yellow "Quran Education" + Black Subtitle under "Education" */}
-          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 py-1">
+          {/* Left Side: Adjusted Compact Logo + Yellow "Quran Education" + Balanced Subtitle */}
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 py-0.5">
             <a
               href="#/home"
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('home');
+              }}
               className="shrink-0 focus:outline-hidden transition-transform hover:scale-105 cursor-pointer"
               aria-label="Quran Education Home"
             >
               <img
                 src="/logo.png"
                 alt="Quran Education Logo"
-                className="h-12 sm:h-14 md:h-16 w-auto object-contain drop-shadow-xs"
+                className="h-9 sm:h-10 md:h-11 w-auto object-contain drop-shadow-xs"
               />
             </a>
 
             <div className="flex flex-col text-left">
               <a
                 href="#/home"
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('home');
+                }}
                 className="focus:outline-hidden cursor-pointer"
               >
-                <span className="text-xl sm:text-2xl font-serif font-black text-[#E5A910] tracking-tight leading-none">
+                <span className="text-lg sm:text-xl md:text-[21px] font-serif font-black text-[#FBD415] tracking-tight leading-none">
                   Quran Education
                 </span>
               </a>
               {/* Sits compactly right under 'Education' */}
               <div className="w-full flex justify-end">
-                <span className="text-[9px] sm:text-[9.5px] text-black font-extrabold tracking-wider uppercase mt-0.5 font-sans leading-none">
+                <span className="text-[8px] sm:text-[8.5px] text-black font-extrabold tracking-wider uppercase mt-0.5 font-sans leading-none">
                   Online Quran Academy
                 </span>
               </div>
@@ -174,7 +178,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Center/Right Navigation: Less bold, reduced width & compact spacing */}
           <div className="flex items-center gap-3">
             {/* Desktop Nav Links */}
-            <nav className="hidden lg:flex items-center gap-2 xl:gap-3.5">
+            <nav className="hidden lg:flex items-center gap-2 xl:gap-3">
               {navLinks.map((link) => {
                 const Icon = link.icon;
                 const isActive = currentPage === link.page;
@@ -190,15 +194,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                     >
                       <a
                         href={`#/${targetHash}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex items-center gap-1 text-[13px] xl:text-[14px] font-medium tracking-normal transition-colors py-1.5 px-1.5 cursor-pointer ${
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavClick(link.page);
+                        }}
+                        className={`flex items-center gap-1 text-[12.5px] xl:text-[13.5px] font-medium tracking-normal transition-colors py-1.5 px-1.5 cursor-pointer ${
                           isActive
                             ? 'text-[#0A3826] font-semibold'
                             : 'text-slate-700 hover:text-[#0A3826]'
                         }`}
                       >
-                        <Icon className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                        <Icon className="w-3.5 h-3.5 text-[#FBD415] shrink-0" />
                         <span>{link.label}</span>
                         <ChevronDown className="w-3 h-3 text-slate-400 ml-0.5" />
                       </a>
@@ -206,16 +212,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                       {/* Courses Dropdown Menu */}
                       {isCoursesDropdownOpen && (
                         <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-slate-200/80 py-2.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150 text-left">
-                          <div className="px-3.5 py-1.5 text-xs font-bold text-[#D4AF37] uppercase tracking-wider font-serif border-b border-slate-100">
+                          <div className="px-3.5 py-1.5 text-xs font-bold text-[#FBD415] uppercase tracking-wider font-serif border-b border-slate-100">
                             Available Courses
                           </div>
                           {featuredCourses.map((c) => (
                             <a
                               key={c.slug}
                               href={`#/course/${c.slug}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() => setIsCoursesDropdownOpen(false)}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                onNavigate('course-detail', c.slug);
+                                setIsCoursesDropdownOpen(false);
+                              }}
                               className="block px-3.5 py-2 text-sm font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#0A3826] transition-colors cursor-pointer"
                             >
                               {c.name}
@@ -224,9 +232,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                           <div className="mt-1 pt-1 border-t border-slate-100">
                             <a
                               href="#/courses"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() => setIsCoursesDropdownOpen(false)}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleNavClick('courses');
+                                setIsCoursesDropdownOpen(false);
+                              }}
                               className="block px-3.5 py-1.5 text-xs font-bold text-[#0A3826] hover:underline cursor-pointer"
                             >
                               View All Courses →
@@ -242,15 +252,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <a
                     key={link.label}
                     href={`#/${targetHash}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-1 text-[13px] xl:text-[14px] font-medium tracking-normal transition-colors py-1.5 px-1.5 cursor-pointer whitespace-nowrap ${
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(link.page, link.isAction);
+                    }}
+                    className={`flex items-center gap-1 text-[12.5px] xl:text-[13.5px] font-medium tracking-normal transition-colors py-1.5 px-1.5 cursor-pointer whitespace-nowrap ${
                       isActive
                         ? 'text-[#0A3826] font-semibold'
                         : 'text-slate-700 hover:text-[#0A3826]'
                     }`}
                   >
-                    <Icon className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                    <Icon className="w-3.5 h-3.5 text-[#FBD415] shrink-0" />
                     <span>{link.label}</span>
                   </a>
                 );
@@ -283,16 +295,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <a
                   key={link.label}
                   href={`#/${targetHash}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(link.page, link.isAction);
+                  }}
                   className={`flex items-center gap-3 text-base font-bold uppercase py-2.5 px-3.5 rounded-xl transition-colors cursor-pointer ${
                     isActive
                       ? 'bg-emerald-50 text-[#0A3826]'
                       : 'text-slate-700 hover:bg-slate-50'
                   }`}
                 >
-                  <Icon className="w-4 h-4 text-[#D4AF37]" />
+                  <Icon className="w-4 h-4 text-[#FBD415]" />
                   <span>{link.label}</span>
                 </a>
               );
@@ -305,19 +318,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               href="mailto:info@quraneducation.uk"
               className="flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-slate-50 text-slate-700 text-xs font-semibold"
             >
-              <Mail className="w-4 h-4 text-[#D4AF37]" />
+              <Mail className="w-4 h-4 text-[#FBD415]" />
               <span>info@quraneducation.uk</span>
             </a>
 
-            <a
-              href="#/enroll"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full py-3 bg-gradient-to-r from-[#0A3826] to-[#072C1E] text-white rounded-xl text-sm font-bold uppercase tracking-wider shadow-md text-center block"
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                onOpenEnroll();
+              }}
+              className="w-full py-3 bg-gradient-to-r from-[#0A3826] to-[#072C1E] text-white rounded-xl text-sm font-bold uppercase tracking-wider shadow-md text-center block cursor-pointer"
             >
               Book 3-Day Free Trial
-            </a>
+            </button>
           </div>
         </div>
       )}

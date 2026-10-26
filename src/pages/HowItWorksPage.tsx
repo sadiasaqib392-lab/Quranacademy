@@ -79,7 +79,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate, onOp
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FBD415]" />
             <span>Effortless Onboarding Process</span>
           </div>
 
@@ -107,7 +107,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate, onOp
                   className="flex flex-col md:flex-row items-start gap-6 p-7 sm:p-8 rounded-3xl bg-white/92 backdrop-blur-sm border border-slate-200/90 shadow-xs hover:shadow-md transition-shadow group"
                 >
                   <div className="flex items-center gap-4 shrink-0">
-                    <span className="text-4xl font-serif font-extrabold text-[#C5A059] group-hover:text-[#0A3826] transition-colors">
+                    <span className="text-4xl font-serif font-extrabold text-[#FBD415] group-hover:text-[#0A3826] transition-colors">
                       {step.num}
                     </span>
                     <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-[#0A3826] shadow-xs">
@@ -136,7 +136,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate, onOp
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8 text-left">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold text-[#C5A059] uppercase tracking-widest font-serif">
+            <span className="text-xs font-bold text-[#FBD415] uppercase tracking-widest font-serif">
               Built for Modern Learners
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#072C1E]">

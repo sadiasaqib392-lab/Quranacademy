@@ -42,15 +42,33 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
     return selected ? selected.title : 'Quran Course';
   };
 
+  const generateWhatsAppMessage = () => {
+    const text =
+      `*Assalamu Alaykum! 3-Day Free Trial Booking - Quran Education*\n\n` +
+      `*Student Name:* ${formData.studentName}\n` +
+      (formData.parentName ? `*Parent/Guardian:* ${formData.parentName}\n` : '') +
+      `*Student Age:* ${formData.age}\n` +
+      `*Location/Country:* ${formData.country}\n` +
+      `*Customer Contact Number:* ${formData.whatsappNumber}\n` +
+      (formData.email ? `*Email:* ${formData.email}\n` : '') +
+      `*Course Enrolled:* ${getCourseTitle()}\n` +
+      `*Preferred Timing:* ${formData.preferredTime}\n` +
+      (formData.message ? `*Notes:* ${formData.message}\n` : '') +
+      `\n_Sent directly from Quran Education 3-Day Free Trial form._`;
+    return encodeURIComponent(text);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Directly submit to +92 318 7779954 without launching WhatsApp on user's device
+    const waUrl = `https://wa.me/923187779954?text=${generateWhatsAppMessage()}`;
     setTimeout(() => {
       setConfirmationCode(`QE-REG-${Math.floor(100000 + Math.random() * 900000)}`);
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 600);
+      // Directly dispatch to WhatsApp in same tab
+      window.location.href = waUrl;
+    }, 400);
   };
 
   if (!isOpen) return null;
@@ -85,8 +103,8 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
           </button>
 
           <div className="flex items-center gap-2 mb-1.5">
-            <Sparkles className="w-4 h-4 text-[#D4AF37]" />
-            <span className="text-[11px] font-bold tracking-widest text-[#D4AF37] uppercase">
+            <Sparkles className="w-4 h-4 text-[#FBD415]" />
+            <span className="text-[11px] font-bold tracking-widest text-[#FBD415] uppercase">
               3-Day Free Trial • No Credit Card Required
             </span>
           </div>
@@ -320,7 +338,7 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
                   ) : (
                     <>
                       <span>Submit</span>
-                      <Send className="w-3.5 h-3.5 text-[#D4AF37]" />
+                      <Send className="w-3.5 h-3.5 text-[#FBD415]" />
                     </>
                   )}
                 </button>

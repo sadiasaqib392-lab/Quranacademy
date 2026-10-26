@@ -39,7 +39,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenEnroll }
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FBD415]" />
             <span>Preserving Sacred Knowledge</span>
           </div>
 
@@ -80,7 +80,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenEnroll }
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-left">
-              <span className="text-xs font-bold text-[#C5A059] uppercase tracking-widest font-serif">
+              <span className="text-xs font-bold text-[#FBD415] uppercase tracking-widest font-serif">
                 Our Sacred Purpose
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#072C1E]">
@@ -130,7 +130,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenEnroll }
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-bold text-[#C5A059] uppercase tracking-widest font-serif">
+            <span className="text-xs font-bold text-[#FBD415] uppercase tracking-widest font-serif">
               Educational Philosophy
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#072C1E]">

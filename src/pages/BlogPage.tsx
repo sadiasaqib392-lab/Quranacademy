@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Sparkles, Search, Clock, Calendar, User, ArrowRight, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { Sparkles, Search, Clock, Calendar, ArrowRight, X } from 'lucide-react';
 import { IslamicPattern } from '../components/IslamicPattern';
 import { PageRoute, BlogPost } from '../types';
 import { blogPosts } from '../data/academyData';
@@ -13,6 +14,17 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, onOpenEnroll }) 
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [readingPost, setReadingPost] = useState<BlogPost | null>(null);
+
+  // Prevent background scrolling while reading an article
+  useEffect(() => {
+    if (readingPost) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [readingPost]);
 
   const categories = [
     'All',
@@ -39,7 +51,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, onOpenEnroll }) 
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#FBD415]" />
             <span>Islamic Insights & Tajweed Guides</span>
           </div>
 
@@ -149,77 +161,83 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, onOpenEnroll }) 
         </div>
       </section>
 
-      {/* Article Reader Modal */}
-      {readingPost && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div
-            onClick={() => setReadingPost(null)}
-            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
-          />
+      {/* Article Reader Modal Portaled to Document Body so it never overlaps or conflicts with footer */}
+      {readingPost &&
+        createPortal(
+          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-slate-950/75 backdrop-blur-md">
+            {/* Backdrop click to close */}
+            <div
+              onClick={() => setReadingPost(null)}
+              className="fixed inset-0"
+              aria-hidden="true"
+            />
 
-          <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 my-8 border border-slate-200 text-left">
-            <div className="relative aspect-[16/9] bg-slate-100 overflow-hidden">
-              <img
-                src={readingPost.image}
-                alt={readingPost.title}
-                className="w-full h-full object-cover"
-              />
-              <button
-                onClick={() => setReadingPost(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white transition-colors"
-                aria-label="Close article modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="p-6 sm:p-8 space-y-4 max-h-[60vh] overflow-y-auto">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-[#0A3826]">
-                  {readingPost.category}
-                </span>
-                <span className="text-xs text-slate-500">{readingPost.readTime}</span>
-              </div>
-
-              <h2 className="text-2xl font-serif font-bold text-[#072C1E]">
-                {readingPost.title}
-              </h2>
-
-              <p className="text-xs text-slate-500 italic pb-2 border-b border-slate-100">
-                Published on {readingPost.date} by {readingPost.author}
-              </p>
-
-              <div className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">
-                {readingPost.content && readingPost.content.length > 0 ? (
-                  readingPost.content.map((paragraph, i) => (
-                    <p key={i}>{paragraph}</p>
-                  ))
-                ) : (
-                  <p>{readingPost.excerpt}</p>
-                )}
-              </div>
-
-              <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <button
-                  onClick={() => {
-                    setReadingPost(null);
-                    onOpenEnroll();
-                  }}
-                  className="w-full sm:w-auto px-6 py-3 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-md cursor-pointer"
-                >
-                  Book 3-Day Free Trial
-                </button>
+            {/* Modal Box */}
+            <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 my-auto border border-slate-200 text-left flex flex-col max-h-[90vh]">
+              <div className="relative aspect-[16/9] bg-slate-100 overflow-hidden shrink-0">
+                <img
+                  src={readingPost.image}
+                  alt={readingPost.title}
+                  className="w-full h-full object-cover"
+                />
                 <button
                   onClick={() => setReadingPost(null)}
-                  className="w-full sm:w-auto px-5 py-3 bg-slate-100 text-slate-700 rounded-xl text-xs font-semibold hover:bg-slate-200 transition-colors cursor-pointer"
+                  className="absolute top-4 right-4 p-2 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white transition-colors cursor-pointer shadow-md"
+                  aria-label="Close article modal"
                 >
-                  Close Article
+                  <X className="w-5 h-5" />
                 </button>
               </div>
+
+              <div className="p-6 sm:p-8 space-y-4 overflow-y-auto flex-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-[#0A3826]">
+                    {readingPost.category}
+                  </span>
+                  <span className="text-xs text-slate-500">{readingPost.readTime}</span>
+                </div>
+
+                <h2 className="text-2xl font-serif font-bold text-[#072C1E]">
+                  {readingPost.title}
+                </h2>
+
+                <p className="text-xs text-slate-500 italic pb-2 border-b border-slate-100">
+                  Published on {readingPost.date} by {readingPost.author}
+                </p>
+
+                <div className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">
+                  {readingPost.content && readingPost.content.length > 0 ? (
+                    readingPost.content.map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))
+                  ) : (
+                    <p>{readingPost.excerpt}</p>
+                  )}
+                </div>
+
+                <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <button
+                    onClick={() => {
+                      setReadingPost(null);
+                      onOpenEnroll();
+                    }}
+                    className="w-full sm:w-auto px-6 py-3 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-md cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <span>Book 3-Day Free Trial</span>
+                    <Sparkles className="w-3.5 h-3.5 text-[#FBD415]" />
+                  </button>
+                  <button
+                    onClick={() => setReadingPost(null)}
+                    className="w-full sm:w-auto px-5 py-3 bg-slate-100 text-slate-700 rounded-xl text-xs font-semibold hover:bg-slate-200 transition-colors cursor-pointer"
+                  >
+                    Close Article
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </div>
   );
 };

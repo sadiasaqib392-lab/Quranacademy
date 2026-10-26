@@ -121,13 +121,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
             <defs>
               {/* Smooth horizontal gradient transition from gold to white/pattern with animated shimmer */}
               <linearGradient id="heroGoldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#D9A328">
-                  <animate attributeName="stopColor" values="#D9A328;#E5B21D;#D9A328" dur="7s" repeatCount="indefinite" />
+                <stop offset="0%" stopColor="#FBD415">
+                  <animate attributeName="stopColor" values="#FBD415;#FCE253;#FBD415" dur="7s" repeatCount="indefinite" />
                 </stop>
-                <stop offset="50%" stopColor="#E5B21D">
+                <stop offset="50%" stopColor="#FCE253">
                   <animate attributeName="offset" values="0.50;0.62;0.50" dur="7s" repeatCount="indefinite" />
                 </stop>
-                <stop offset="82%" stopColor="#F5D061" />
+                <stop offset="82%" stopColor="#FBD415" />
                 <stop offset="96%" stopColor="#F8F4EC" stopOpacity="0.85" />
                 <stop offset="100%" stopColor="#FAF9F5" stopOpacity="0" />
               </linearGradient>
@@ -168,7 +168,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
             >
               {/* Mobile/Tablet Golden Card Wrapper */}
               <div className="w-full lg:contents">
-                <div className="rounded-3xl lg:rounded-none bg-gradient-to-r from-[#D9A328] via-[#E2B338] to-[#F1C84D] animate-horizontal-gradient lg:bg-none p-6 sm:p-8 lg:p-0 text-white relative overflow-hidden shadow-lg lg:shadow-none">
+                <div className="rounded-3xl lg:rounded-none bg-gradient-to-r from-[#FBD415] via-[#FCE253] to-[#FBD415] animate-horizontal-gradient lg:bg-none p-6 sm:p-8 lg:p-0 text-white relative overflow-hidden shadow-lg lg:shadow-none">
                   
                   {/* Overlapping Rounded Student Quran Reading Cards with Automatic Slider */}
                   <div className="relative z-20 flex flex-col items-center lg:items-start py-4 sm:py-6 lg:py-8 pl-0 sm:pl-2 w-full">
@@ -237,13 +237,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                 {/* Main Heading in elegant dark green and gold typography */}
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-serif font-extrabold leading-[1.15] tracking-tight mt-1 text-center">
                   <span className="text-[#072C1E]">Online </span>
-                  <span className="text-[#D4AF37]">Quran Academy</span>
+                  <span className="text-[#FBD415]">Quran Academy</span>
                 </h1>
               </div>
 
               {/* Premier International Islamic Online Academy Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0A3826] text-[#D4AF37] text-xs sm:text-sm font-bold shadow-md">
-                <Sparkles className="w-4 h-4 text-[#D4AF37] shrink-0" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0A3826] text-[#FBD415] text-xs sm:text-sm font-bold shadow-md">
+                <Sparkles className="w-4 h-4 text-[#FBD415] shrink-0" />
                 <span>Premier International Islamic Online Academy</span>
               </div>
 
@@ -254,16 +254,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#0A3826] to-[#072C1E] hover:from-[#0E4B33] hover:to-[#0A3826] text-white rounded-xl text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-200 shadow-md shadow-emerald-950/20 hover:shadow-xl active:scale-95 cursor-pointer whitespace-nowrap"
                 >
                   <span>Book 3-Day Free Trial</span>
-                  <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+                  <ArrowRight className="w-4 h-4 text-[#FBD415]" />
                 </button>
 
                 <a
                   href={`${ACADEMY_CONFIG.whatsappUrl}?text=${encodeURIComponent(
                     'As-salamu alaykum! I would like to inquire about online Quran classes and book a 3-Day Free Trial.'
                   )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-sm sm:text-base font-bold transition-all shadow-md active:scale-95 whitespace-nowrap"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-sm sm:text-base font-bold transition-all shadow-md active:scale-95 whitespace-nowrap cursor-pointer"
                 >
                   <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                     <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
@@ -322,7 +320,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
       <section className="relative py-20 bg-transparent">
         <div className="relative max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/10 text-[#0A3826] text-xs sm:text-sm font-bold">
-            <Award className="w-4 h-4 text-[#C5A059]" />
+            <Award className="w-4 h-4 text-[#FBD415]" />
             <span>Islamic Academic Excellence</span>
           </div>
 
@@ -361,16 +359,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-sm font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer"
               >
                 <span>Enroll Now</span>
-                <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+                <ArrowRight className="w-4 h-4 text-[#FBD415]" />
               </button>
 
               <a
                 href={`${ACADEMY_CONFIG.whatsappUrl}?text=${encodeURIComponent(
                   'As-salamu alaykum! I would like to inquire about enrolling in Quran Education.'
                 )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-sm font-bold transition-all shadow-md"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-sm font-bold transition-all shadow-md cursor-pointer"
               >
                 <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                   <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
@@ -387,7 +383,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 text-left">
             <div>
-              <span className="text-xs sm:text-sm font-bold text-[#C5A059] uppercase tracking-widest font-serif">
+              <span className="text-xs sm:text-sm font-bold text-[#FBD415] uppercase tracking-widest font-serif">
                 Comprehensive Curriculum
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#072C1E] mt-1">
@@ -461,7 +457,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/5 text-[#0A3826] text-xs sm:text-sm font-bold">
-              <Sparkles className="w-4 h-4 text-[#C5A059]" />
+              <Sparkles className="w-4 h-4 text-[#FBD415]" />
               <span>Simple & Transparent Admissions</span>
             </div>
 
@@ -483,7 +479,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-3xl sm:text-4xl font-serif font-extrabold text-[#C5A059] group-hover:text-[#0A3826] transition-colors">
+                    <span className="text-3xl sm:text-4xl font-serif font-extrabold text-[#FBD415] group-hover:text-[#0A3826] transition-colors">
                       {step.num}
                     </span>
                     <div className="w-8 h-8 rounded-full bg-emerald-100/70 text-[#0A3826] flex items-center justify-center font-bold text-xs shadow-2xs">
@@ -510,16 +506,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
             >
               <span>Contact Academy</span>
-              <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+              <ArrowRight className="w-4 h-4 text-[#FBD415]" />
             </button>
 
             <a
               href={`${ACADEMY_CONFIG.whatsappUrl}?text=${encodeURIComponent(
                 'As-salamu alaykum! I would like to begin my Quran learning journey and schedule my 3-Day Free Trial.'
               )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-md active:scale-95 whitespace-nowrap"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-md active:scale-95 whitespace-nowrap cursor-pointer"
             >
               <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
                 <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
@@ -529,7 +523,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
 
             <button
               onClick={() => onOpenEnroll()}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] hover:from-[#E5BE48] hover:to-[#D4AF37] text-slate-950 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-gradient-to-r from-[#FBD415] to-[#E5BE1D] hover:from-[#FCE253] hover:to-[#FBD415] text-slate-950 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
             >
               <span>Book 3-Day Free Trial</span>
               <Sparkles className="w-4 h-4 text-[#072C1E]" />
@@ -546,7 +540,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
             className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
           >
             <span>How It Works</span>
-            <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+            <ArrowRight className="w-4 h-4 text-[#FBD415]" />
           </button>
 
           <button
@@ -554,12 +548,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
             className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#0A3826] hover:bg-[#072C1E] text-white rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
           >
             <span>Contact Academy</span>
-            <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+            <ArrowRight className="w-4 h-4 text-[#FBD415]" />
           </button>
 
           <button
             onClick={() => onNavigate('contact')}
-            className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] hover:from-[#E5BE48] hover:to-[#D4AF37] text-slate-950 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
+            className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-gradient-to-r from-[#FBD415] to-[#E5BE1D] hover:from-[#FCE253] hover:to-[#FBD415] text-slate-950 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
           >
             <span>Academy Contact Form</span>
             <ArrowRight className="w-4 h-4 text-[#072C1E]" />
@@ -567,9 +561,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
 
           <a
             href="https://wa.me/923187779954?text=As-salamu%20alaykum!%20I%20would%20like%20to%20begin%20my%20Quran%20learning%20journey%20and%20schedule%20my%203-Day%20Free%20Trial."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-md active:scale-95 whitespace-nowrap"
+            className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-xl text-xs sm:text-sm font-bold transition-all shadow-md active:scale-95 whitespace-nowrap cursor-pointer"
           >
             <svg className="w-4 h-4 fill-white" viewBox="0 0 24 24">
               <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.807 1.558 5.36L2 22l4.75-1.523A9.97 9.97 0 0 0 12.031 22C17.566 22 22 17.566 22 12.031 22 6.496 17.566 2 12.031 2zm5.72 14.34c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.17.11-3.79-.95-2.24-.9-3.69-3.17-3.8-3.32-.11-.15-.92-1.22-.92-2.33 0-1.11.58-1.65.79-1.88.2-.23.45-.29.6-.29.15 0 .3 0 .43.01.14.01.32-.05.5.39.18.44.62 1.52.68 1.63.06.11.1.25.02.4-.07.15-.11.24-.22.37-.11.13-.23.29-.33.39-.11.11-.23.23-.1.45.13.22.58.96 1.25 1.56.86.77 1.59 1.01 1.81 1.12.22.11.35.1.48-.05.13-.15.56-.65.71-.88.15-.22.3-.18.5-.11.2.07 1.29.61 1.51.72.22.11.37.17.43.26.05.1.05.58-.19 1.25z" />
@@ -583,7 +575,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
       <section className="relative py-20 bg-transparent">
         <div className="relative max-w-5xl mx-auto px-4 sm:px-8 text-center">
           <div className="space-y-3 mb-12">
-            <span className="text-xs sm:text-sm font-bold text-[#C5A059] uppercase tracking-widest font-serif">
+            <span className="text-xs sm:text-sm font-bold text-[#FBD415] uppercase tracking-widest font-serif">
               Trusted by 200+ Muslim Families
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#072C1E]">
@@ -592,15 +584,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnroll }) 
           </div>
 
           <div className="relative bg-white/92 backdrop-blur-sm p-8 sm:p-12 rounded-3xl border border-slate-200/90 shadow-sm max-w-3xl mx-auto">
-            <Quote className="w-10 h-10 text-[#C5A059]/40 mx-auto mb-4" />
+            <Quote className="w-10 h-10 text-[#FBD415]/40 mx-auto mb-4" />
 
             <p className="text-base sm:text-lg md:text-xl text-slate-700 leading-relaxed font-serif italic mb-6">
               "{testimonials[activeTestimonialIdx]?.quote}"
             </p>
 
-            <div className="flex items-center justify-center gap-1 text-[#D4AF37] mb-3">
+            <div className="flex items-center justify-center gap-1 text-[#FBD415] mb-3">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-[#D4AF37]" />
+                <Star key={i} className="w-5 h-5 fill-[#FBD415]" />
               ))}
             </div>
 
